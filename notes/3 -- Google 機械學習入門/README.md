@@ -1,70 +1,70 @@
-# Google机器学习速成课程
+機器學習速成課程
 
-官网：https://developers.google.com/machine-learning/crash-course/
+官網：https://developers.google.com/machine-learning/crash-course/
 
-- [视频课程](https://developers.google.com/machine-learning/crash-course/)
-- [练习](https://developers.google.com/machine-learning/crash-course/exercises)
-- [术语库](https://developers.google.com/machine-learning/crash-course/glossary)
+- [視頻課程](https://developers.google.com/machine-learning/crash-course/)
+- [練習](https://developers.google.com/machine-learning/crash-course/exercises)
+- [術語庫](https://developers.google.com/machine-learning/crash-course/glossary)
 
-**机器学习速成课程简介**
+**機器學習速成課程簡介**
 
-- Google 制作的节奏紧凑、内容实用的机器学习简介课程（使用TensorFlow API）
-- 学习速成课程包含一系列视频讲座课程、实际案例分析和实践练习。
-
-
-**Bilibili视频**
-
-- [英文语音&中文字幕](https://www.bilibili.com/video/av21398424/?p=1)
-- [中文语音&无字幕](https://www.bilibili.com/video/av20229263/?p=1)
+- Google 製作的節奏緊湊、內容實用的機器學習簡介課程（使用TensorFlow API）
+- 學習速成課程包含一系列視頻講座課程、實際案例分析和實踐練習。
 
 
-# 目录
+**Bilibili視頻**
 
-## 简介
-
-[前提条件和准备工作](简介/前提条件和准备工作.md)
-
+- [英文語音&中文字幕](https://www.bilibili.com/video/av21398424/?p=1)
+- [中文語音&無字幕](https://www.bilibili.com/video/av20229263/?p=1)
 
 
-## 第一部分：机器学习概念
+# 目錄
 
-- [x] [机器学习简介](机器学习概念/机器学习简介.md)
-- [x] [问题构建](机器学习概念/问题构建.md)
-- [x] [深入了解机器学习](机器学习概念/深入了解机器学习.md)
-- [x] [降低损失](机器学习概念/降低损失.md)
-- [ ] 使用TF的基本步骤
+## 簡介
+
+[前提條件和準備工作](簡介/前提條件和準備工作.md)
+
+
+
+## 第一部分：機器學習概念
+
+- [x] [機器學習簡介](機器學習概念/機器學習簡介.md)
+- [x] [問題構建](機器學習概念/問題構建.md)
+- [x] [深入了解機器學習](機器學習概念/深入了解機器學習.md)
+- [x] [降低損失](機器學習概念/降低損失.md)
+- [ ] 使用TF的基本步驟
 - [ ] 泛化
-- [ ] 训练集和测试集
-- [ ] 验证
+- [ ] 訓練集和測試集
+- [ ] 驗證
 - [ ] 表示法
-- [ ] 特征组合
-- [ ] 正则化：简单性
-- [ ] 逻辑回归
-- [ ] 分类
-- [ ] 正则化：稀疏性
-- [ ] 神经网络简介
-- [ ] 训练神经网络
-- [ ] 多类别神经网络
+- [ ] 特徵組合
+- [ ] 正則化：簡單性
+- [ ] 邏輯回歸
+- [ ] 分類
+- [ ] 正則化：稀疏性
+- [ ] 神經網絡簡介
+- [ ] 訓練神經網絡
+- [ ] 多類別神經網絡
 - [ ] 嵌入
 
 
 
-## 第二部分：机器学习工程
+## 第二部分：機器學習工程
 
-- [ ] 生产环境机器学习系统
-- [ ] 静态训练和动态训练
-- [ ] 静态推理与动态推理
-- [ ] 数据依赖关系
+- [ ] 生產環境機器學習系統
+- [ ] 靜態訓練和動態訓練
+- [ ] 靜態推理與動態推理
+- [ ] 數據依賴關係
 
 
 
-## 第三部分：机器学习现实世界应用示例
+## 第三部分：機器學習現實世界應用示例
 
-- [ ] 癌症预测
-- [ ] 18世纪文学
-- [ ] 现实世界应用准则
+- [ ] 癌症預測
+- [ ] 18世紀文學
+- [ ] 現實世界應用準則
 - [ ] ​
 
-## 总结
+## 總結
 
-- 后续步骤
+- 後續步驟
