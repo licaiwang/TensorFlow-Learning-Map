@@ -1,11 +1,11 @@
-### --- TensorFlow 入門學習 ---
+# TensorFlow 入門學習 
 
 原文連結：https://github.com/amusi/TensorFlow-From-Zero-To-One  
 資源連結：https://github.com/Hvass-Labs/TensorFlow-Tutorials-Chinese
 
-## --- 在你開始之前 ---
+## 在你開始之前 
 
- # Requirements
+### Requirements
  
             numpy
             scipy
