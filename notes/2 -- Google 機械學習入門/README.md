@@ -2,7 +2,7 @@
 
 官網：https://developers.google.com/machine-learning/crash-course/
 
-- [視頻課程](https://developers.google.com/machine-learning/crash-course/)
+- [線上課程](https://developers.google.com/machine-learning/crash-course/)
 - [練習](https://developers.google.com/machine-learning/crash-course/exercises)
 - [術語庫](https://developers.google.com/machine-learning/crash-course/glossary)
 
@@ -24,16 +24,16 @@
 
 ## 簡介
 
-[前提條件和準備工作](簡介/前提條件和準備工作.md)
+[前提條件和準備工作](簡介/準備工作.md)
 
 
 
 ## 第一部分：機器學習概念
 
-- [x] [機器學習簡介](機器學習概念/機器學習簡介.md)
-- [x] [問題構建](機器學習概念/問題構建.md)
-- [x] [深入了解機器學習](機器學習概念/深入了解機器學習.md)
-- [x] [降低損失](機器學習概念/降低損失.md)
+- [x] [機器學習簡介](機器學習概念/1- 簡介.md)
+- [x] [問題構建](機器學習概念/2 - 問題建構.md)
+- [x] [深入了解機器學習](機器學習概念/3 - 降低損失.md)
+- [x] [降低損失](機器學習概念/4 - 深入了解機械學習.md)
 - [ ] 使用TF的基本步驟
 - [ ] 泛化
 - [ ] 訓練集和測試集
@@ -65,7 +65,6 @@
 - [ ] 癌症預測
 - [ ] 18世紀文學
 - [ ] 現實世界應用準則
-- [ ] ​
 
 ## 總結
 
