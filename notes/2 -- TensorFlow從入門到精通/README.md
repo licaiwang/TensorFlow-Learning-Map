@@ -1,76 +1,76 @@
-# TensorFlow 从入门到精通
+# TensorFlow 從入門到精通
 
-官网：https://youtu.be/er8RQZoX3yk
+官網：https://youtu.be/er8RQZoX3yk
 
-- [视频课程](https://youtu.be/er8RQZoX3yk)
+- [線上課程](https://youtu.be/er8RQZoX3yk)
 - [github-TensorFlow-Tutorials](https://github.com/Hvass-Labs/TensorFlow-Tutorials)
 - [github-TensorFlow-Tutorials-Chinese](https://github.com/Hvass-Labs/TensorFlow-Tutorials-Chinese)
 
-**TensorFlow从入门到精通教程（TensorFlow-Tutorials）简介**
+**TensorFlow 從入門到精通教程（TensorFlow-Tutorials）簡介**
 
-- TensorFlow教程的介绍和概述
+- TensorFlow教程的介绍
 
 
-# 目录
+# 目錄
 
 ## 前言
 
-- TensorFlow教程的介绍
-- 在云端运行TensorFlow教程
-- TensorFlow GPU 和 CPU版本的速度测试
+- TensorFlow 教程的介绍
+- 在雲端運行 TensorFlow 教程
+- TensorFlow GPU 和 CPU 版本的速度測試
 
-## TensorFlow教程内容
+## TensorFlow 教程内容
 
-- [01 简单线性模型（Simple Linear Model）](01_简单线性模型.ipynb)
+- [01 Simple Linear Model](01_簡單線性模型.ipynb)
 
-- 02 卷积神经网络（Convolutional Neural Network）
+- [02 Convolutional Neural Network](02_捲積神經網路)
 
-- 03 张量（Pretty Tensor）
+- [03 Pretty Tensor](03_張量)
 
-- 03-B 层（Layers） API
+- [03-1 Layers API] (03-1_層)
 
-- 03-C Keras API
+- [03-2 Keras API](03-2_Keras)
 
-- 04 保存和恢复（Save & Restore）
+- [04 Save & Restore](04_保存與恢復)
 
-- 05 ？？？学习（Ensemble Learning）
+- [05 Ensemble Learning](05_整體學習)
 
-- 06 CIFAR-10
+- [06 CIFAR-10](06_CIFAR-10_小圖片測試)
 
-- 07 Inception Model
+- [07 Inception Model](07_Google_預訓練好的模型)
 
-- 07 Inception Model(Extra)
+- [07 Inception Model(Extra)] (08_Google_更多預訓練好的模型)
 
-- 08 迁移学习（Transfer Learning）
+- [08 Transfer Learning](09_遷移學習)
 
-- 09 视频数据（Video Data）
+- [09 Video Data](09_影片數據)
 
-- 10 Fine-Tuning
+- [10 Fine-Tuning](10_微調)
 
-- 11 对抗示例（Adversarial Examples）
+- [11 Adversarial Examples](11_對抗例)
 
-- 12 MNIST的对抗噪声（Adversarial Noise for MNIST）
+- [12 Adversarial Noise for MNIST](12_MNIST的對抗噪音)
 
-- 13 视觉分析（Visual Analysis）
+- [13 Visual Analysis](13_視覺分析)
 
-- 13-B MNIST的视觉分析（Visual Analysis for MNIST）
+- [13-1 Visual Analysis for MNIST](13_1 MNIST的視覺分析)
 
-- 14 DeepDream
+- [14 DeepDream] (14_人工惡夢(Google自家生成圖片的技術))
 
-- 15 风格迁移（Style Transfer）
+- [15 Style Transfer] (15_風格轉換(將一張照片換成另一幅畫的畫風))
 
-- 16 增强学习（Reinforcement Learning）
+- [16 Reinforcement Learning] (16_強化學習(如何基於環境而行動，以取得最大化的預期利益))
 
-- 17 估计器API（Estimator API）
+- [17 Estimator API] (17_估計器)
 
-- 18 TFRecords & Dataset API
+- [18 TFRecords & Dataset API] (18_TensorFlow中的設計的一種內置的文件格式學習)
 
-- 19 超参数优化（Hyper-Parameter Optimization）
+- [19 Hyper-Parameter Optimization] (19_超引數優化(為學習算法選擇一組最佳超參數的問題。超參數用於控制學習過程。相反，學習其他參數的值。 相同類型的機器學習模型可能需要不同的約束，權重或學習率，才能概括出不同的數據模式。這些度量稱為超參數))
 
-- 20 自然语言处理（Neural Language Processing）
+- [20 Neural Language Processing](20_自然語言處理)
 
-- 21 机器翻译（Machine Translation）
+- [21 Machine Translation] (21_機械翻譯)
 
-- 22 图像字幕（Image Captioning）
+- [22 Image Captioning] (22_圖像字幕)
 
-- 23 时间序列预测（Time-Series Prediction）
+- [23 Time-Series Prediction] (23_時間序列預測)
