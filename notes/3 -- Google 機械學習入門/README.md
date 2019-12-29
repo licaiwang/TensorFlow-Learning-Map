@@ -12,7 +12,7 @@
 - 學習速成課程包含一系列視頻講座課程、實際案例分析和實踐練習。
 
 **台大李宏毅**
- - [Youtube線上課程] (https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ)
+ - [Youtube線上課程](https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ)
 
 **Bilibili視頻**
 
