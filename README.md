@@ -13,8 +13,8 @@
             matplotlib
             Pillow
             scikit-learn
-            tensorflow		# CPU Version of TensorFlow.
-            tensorflow-gpu	# GPU version of TensorFlow.
+            tensorflow              # CPU Version of TensorFlow.
+            tensorflow-gpu	         # GPU version of TensorFlow.
             gym[atari]              # Tutorial #16 on Reinforcement Learning.
             pandas                  # Tutorial #23 on Time-Series Prediction.
 
