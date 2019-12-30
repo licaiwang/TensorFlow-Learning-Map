@@ -21,7 +21,7 @@
 
 ## TensorFlow 教程内容
 
-- [01 Simple Linear Model](../01_簡單線性模型.ipynb)
+- [01 Simple Linear Model](01_簡單的線性模型.ipynb)
 
 - [02 Convolutional Neural Network]   (02_捲積神經網路)
 
