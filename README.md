@@ -1,4 +1,4 @@
-# TensorFlow 入門學習 
+# TensorFlow 入門學習繁體中文版
 
 原文連結：https://github.com/amusi/TensorFlow-From-Zero-To-One  
 
