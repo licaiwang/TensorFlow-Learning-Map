@@ -5,11 +5,6 @@
 ## 使用說明
 這個筆記是根據李宏毅老師機器學習視頻的一個輔助資料，本筆記基本上完全復刻李老師課堂上講的所有內容，並加入了一些和相關的學習補充資料和參考資料，結合這些資料一起學習，相信你會對機器學習有更加深刻的理解。
 
-### 筆記在線閱讀地址
-在線閱讀地址：https://datawhalechina.github.io/leeml-notes
-
-### 課程在線觀看地址
-- bilibili：[李宏毅《機器學習》](https://www.bilibili.com/video/av59538266)
 
 # 目錄
 - [P1 機器學習介紹](https://datawhalechina.github.io/leeml-notes/#/chapter1/chapter1)
