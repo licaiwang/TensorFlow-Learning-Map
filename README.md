@@ -2,6 +2,7 @@
 
 原文連結：https://github.com/amusi/TensorFlow-From-Zero-To-One  
 資源連結：https://github.com/Hvass-Labs/TensorFlow-Tutorials-Chinese
+李宏毅老師的課程筆記：https://github.com/datawhalechina/leeml-notes
 
 ## 在你開始之前 
 
