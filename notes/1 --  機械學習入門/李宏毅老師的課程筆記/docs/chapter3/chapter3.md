@@ -3,17 +3,17 @@
 Regression 就是找到一個函數 $function$ ，通過輸入特徵 $x$，輸出一個數值 $Scalar$。
 ### 應用舉例
 - 股市預測（Stock market forecast）
-- 輸入：過去10年股票的變動、新聞諮詢、公司併購諮詢等
-- 輸出：預測股市明天的平均值
+    輸入：過去10年股票的變動、新聞諮詢、公司併購諮詢等
+    輸出：預測股市明天的平均值
 - 自動駕駛（Self-driving Car）
-- 輸入：無人車上的各個sensor的數據，例如路況、測出的車距等
-- 輸出：方向盤的角度
+    輸入：無人車上的各個sensor的數據，例如路況、測出的車距等
+    輸出：方向盤的角度
 - 商品推薦（Recommendation）
-    - 輸入：商品A的特性，商品B的特性
-    - 輸出：購買商品B的可能性
+    輸入：商品A的特性，商品B的特性
+    輸出：購買商品B的可能性
 - Pokemon精靈攻擊力預測（Combat Power of a pokemon）：
-- 輸入：進化前的CP值、物種（Bulbasaur）、血量（HP）、重量（Weight）、高度（Height）
-- 輸出：進化後的CP值
+    輸入：進化前的CP值、物種（Bulbasaur）、血量（HP）、重量（Weight）、高度（Height）
+    輸出：進化後的CP值
 
 ## 模型步驟
 - step1：模型假設，選擇模型框架（線性模型）
