@@ -16,9 +16,9 @@ Regression 就是找到一個函數 $function$ ，通過輸入特徵 $x$，輸�
     
 - 商品推薦（Recommendation）
 
-    輸入：商品A的特性，商品B的特性
+    輸入：商品A的特性，商品B的特性
     
-    輸出：購買商品B的可能性
+    輸出：購買商品B的可能性
     
 - Pokemon精靈攻擊力預測（Combat Power of a pokemon）：
 
