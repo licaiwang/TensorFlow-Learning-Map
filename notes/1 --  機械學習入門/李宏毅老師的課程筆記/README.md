@@ -3,7 +3,7 @@
 
 # 目錄
 - [P1 機器學習介紹](docs/chapter1/chapter1.md)
-- [P2 為什麼要學習機器學習]
+- [P2 為什麼要學習機器學習](docs/chapter2/chapter2.md)
 - [P3 回歸]
 - [P4 回歸-演示]
 - [P5 誤差從哪來？ ]
