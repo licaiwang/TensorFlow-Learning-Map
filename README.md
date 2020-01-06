@@ -29,5 +29,9 @@
             2019/12/29 - 做了一些翻譯與增加資料
             2019/12/30 - Rewrite： 2 -- TensorFlow從入門到精通/01_簡單的線性模型.ipynb
             2019/12/31 - ADD： 1 -- 機械學習入門/李宏毅老師的課程筆記
+            2020/12/31 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter1
+            2020/12/31 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter2
             2020/01/05 - ADD： 2 -- TensorFlow從入門到精通/02_捲積神經網路.ipynb
-            2019/01/06 - ADD： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter2/GradientDescentDemo.ipynb
+            2020/01/05 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter3
+            2019/01/06 - ADD： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter4/GradientDescentDemo.ipynb
+            2019/01/06 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter5
