@@ -3,7 +3,7 @@
 ![](res/chapter5-1.png)
 從上節課測試集數據來看，**Average_ Error** 隨著模型複雜增加呈指數上升趨勢。更複雜的模型並不能給測試集帶來更好的效果，而這些 **Error** 的主要有兩個來源，分​​別是 **bias** 和 **variance** 。
 
-然而 **bias** 和 **variance** 是什麼？可以查看 [機器學習中的Bias(偏差)，Error(誤差)，和Variance(方差)有什麼區別和聯繫？ ](https:__www.zhihu.com_question_27068705)
+然而 **bias** 和 **variance** 是什麼？可以查看 [【機器學習】偏差與方差之權衡 Bias-Variance Tradeoff ](https://jason-chen-1992.weebly.com/home/-bias-variance-tradeoff)
 
 ## 估測
 
