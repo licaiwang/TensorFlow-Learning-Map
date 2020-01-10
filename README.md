@@ -35,3 +35,6 @@
             2020/01/05 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter3
             2019/01/06 - ADD： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter4/GradientDescentDemo.ipynb
             2019/01/06 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter5
+            2019/01/10 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter6
+            2019/01/10 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter7
+            2019/01/10 - Rewrite： 1 -- 機械學習入門/李宏毅老師的課程筆記/chapter8
