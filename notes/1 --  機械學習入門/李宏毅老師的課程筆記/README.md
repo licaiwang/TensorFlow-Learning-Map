@@ -6,7 +6,7 @@
 - [P2 為什麼要學習機器學習](docs/chapter2/chapter2.md)
 - [P3 回歸](docs/chapter3/chapter3.md)
 - [P4 回歸-演示](docs/chapter4/GradientDescentDemo.ipynb)
-- [P5 誤差從哪來？ ]
+- [P5 誤差從哪來？ ](docs/chapter5/chapter5.md)
 - [P6 梯度下降]
 - [P7 梯度下降（用AOE演示）]
 - [P8 梯度下降（用Minecraft演示）]
