@@ -64,13 +64,13 @@
 
 普通的梯度下降為：
 
-****w^{t+1} \leftarrow w^t -η^tg^t \tag3****
+****w^{t+1} ->w^t -η^tg^t \tag3****
 ****\eta^t =\frac{\eta^t}{\sqrt{t+1}} \tag4****
 
 - **w** 是一個參數
 
 Adagrad 可以做的更好：
-****w^{t+1} \leftarrow w^t -\frac{η^t}{\sigma^t}g^t \tag5****
+****w^{t+1} ->w^t -\frac{η^t}{\sigma^t}g^t \tag5****
 ****g^t =\frac{\partial L(\theta^t)}{\partial w} \tag6****
 - **\sigma^t** :之前參數的所有微分的均方根，對於每個參數都是不一樣的。
 
