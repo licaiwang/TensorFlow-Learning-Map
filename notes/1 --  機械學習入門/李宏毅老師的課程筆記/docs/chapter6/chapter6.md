@@ -5,30 +5,30 @@
 ### Review: 梯度下降法
 在回歸問題的第三步中，需要解決下面的最優化問題：
 
-****\theta^∗= \underset{ \theta }{\operatorname{arg\ min}} L(\theta) \tag1****
+****theta^∗= underset{ theta }{operatorname{arg min}} L(theta) tag1****
 - **L** :lossfunction（損失函數）
-- **\theta** :parameters（參數）
+- **theta** :parameters（參數）
 
-這裡的parameters是複數，即 **\theta** 指代一堆參數，比如上篇說到的 **w** 和 **b** 。
+這裡的parameters是複數，即 **theta** 指代一堆參數，比如上篇說到的 **w** 和 **b** 。
 
-我們要找一組參數 **\theta** ，讓損失函數越小越好，這個問題可以用梯度下降法解決：
+我們要找一組參數 **theta** ，讓損失函數越小越好，這個問題可以用梯度下降法解決：
 
-假設 **\theta** 有里面有兩個參數 **\theta_1, \theta_2**
+假設 **theta** 有里面有兩個參數 **theta_1, theta_2**
 隨機選取初始值
 
 ****
-\theta^0 = \begin{bmatrix}
-\theta_1^0 \\
-\theta_2^0
-\end{bmatrix} \tag2
+theta^0 = begin{bmatrix}
+theta_1^0 
+theta_2^0
+end{bmatrix} tag2
 ****
 
 這裡可能某個平台不支持矩陣輸入，看下圖就好。
 
 ![](res/chapter6-1.png)
 
-然後分別計算初始點處，兩個參數對 **L** 的偏微分，然後 **\theta^0** 減掉 **\eta** 乘上偏微分的值，得到一組新的參數。同理反復進行這樣的計算。黃色部分為簡潔的寫法，**\triangledown L(\theta)** 即為梯度。
- > **\eta** 叫做Learning rates（學習速率）
+然後分別計算初始點處，兩個參數對 **L** 的偏微分，然後 **theta^0** 減掉 **eta** 乘上偏微分的值，得到一組新的參數。同理反復進行這樣的計算。黃色部分為簡潔的寫法，**triangledown L(theta)** 即為梯度。
+ > **eta** 叫做Learning rates（學習速率）
 
 ![](res/chapter6-2.png)
 
@@ -54,7 +54,7 @@
 - 通常剛開始，初始點會距離最低點比較遠，所以使用大一點的學習率
 - update好幾次參數之後呢，比較靠近最低點了，此時減少學習率
 
-- 比如 **\eta^t =\frac{\eta^t}{\sqrt{t+1}}**，**t** 是次數。隨著次數的增加，**\eta^t** 減小
+- 比如 **eta^t =frac{eta^t}{sqrt{t+1}}**，**t** 是次數。隨著次數的增加，**eta^t** 減小
 
 學習率不能是一個值通用所有特徵，不同的參數需要不同的學習率
 
@@ -64,15 +64,15 @@
 
 普通的梯度下降為：
 
-****w^{t+1} ->w^t -η^tg^t \tag3****
-****\eta^t =\frac{\eta^t}{\sqrt{t+1}} \tag4****
+****w^{t+1} ->w^t -η^tg^t tag3****
+****eta^t =frac{eta^t}{sqrt{t+1}} tag4****
 
 - **w** 是一個參數
 
 Adagrad 可以做的更好：
-****w^{t+1} ->w^t -\frac{η^t}{\sigma^t}g^t \tag5****
-****g^t =\frac{\partial L(\theta^t)}{\partial w} \tag6****
-- **\sigma^t** :之前參數的所有微分的均方根，對於每個參數都是不一樣的。
+****w^{t+1} ->w^t -frac{η^t}{sigma^t}g^t tag5****
+****g^t =frac{partial L(theta^t)}{partial w} tag6****
+- **sigma^t** :之前參數的所有微分的均方根，對於每個參數都是不一樣的。
 
 #### Adagrad舉例
 下圖是一個參數的更新過程
@@ -96,7 +96,7 @@ Adagrad 可以做的更好：
 
 ![](res/chapter6-8.png)
 
-比如初始點在**x_0**，最低點為**−\frac{b}{2a}**，最佳的步伐就是**x0** 到最低點之間的距離**\left | x_0+\frac{b}{2a } \right |**，也可以寫成**\left | \frac{2ax_0+b}{2a} \right |**。而剛好 **|2ax_0+b|** 就是方程絕對值在 **x_0** 這一點的微分。
+比如初始點在**x_0**，最低點為**−frac{b}{2a}**，最佳的步伐就是**x0** 到最低點之間的距離**left | x_0+frac{b}{2a } right |**，也可以寫成**left | frac{2ax_0+b}{2a} right |**。而剛好 **|2ax_0+b|** 就是方程絕對值在 **x_0** 這一點的微分。
 
 這樣可以認為如果算出來的微分越大，則距離最低點越遠。而且最好的步伐和微分的大小成正比。所以如果踏出去的步伐和微分成正比，它可能是比較好的。
 
@@ -113,10 +113,10 @@ Adagrad 可以做的更好：
 
 所以結論1-1是在沒有考慮跨參數對比的情況下，才能成立的。所以還不完善。
 
-之前說到的最佳距離 **\left | \frac{2ax_0+b}{2a} \right |**，還有個分母 **2a** 。對function進行二次微分剛好可以得到：
-****\frac{\partial ^2y}{\partial x^2} = 2a \tag7****
+之前說到的最佳距離 **left | frac{2ax_0+b}{2a} right |**，還有個分母 **2a** 。對function進行二次微分剛好可以得到：
+****frac{partial ^2y}{partial x^2} = 2a tag7****
 所以最好的步伐應該是：
-****\frac{一次微分}{二次微分}****
+****frac{一次微分}{二次微分}****
 即不止和一次微分成正比，還和二次微分成反比。最好的step應該考慮到二次微分：
 
 ![](res/chapter6-10.png)
@@ -126,21 +126,21 @@ Adagrad 可以做的更好：
 
 ![](res/chapter6-11.png)
 
-對於 **\sqrt{\sum_{i=0}^t(g^i)^2}** 就是希望再盡可能不增加過多運算的情況下模擬二次微分。 （如果計算二次微分，在實際情況中可能會增加很多的時間消耗）
+對於 **sqrt{sum_{i=0}^t(g^i)^2}** 就是希望再盡可能不增加過多運算的情況下模擬二次微分。 （如果計算二次微分，在實際情況中可能會增加很多的時間消耗）
 
 ## Tip2：隨機梯度下降法
 
 之前的梯度下降：
 
-****L=\sum_n(\hat y^n-(b+\sum w_ix_i^n))^2 \tag8****
-****\theta^i =\theta^{i-1}- \eta\triangledown L(\theta^{i-1}) \tag9****
+****L=sum_n(hat y^n-(b+sum w_ix_i^n))^2 tag8****
+****theta^i =theta^{i-1}- etatriangledown L(theta^{i-1}) tag9****
 
 而隨機梯度下降法更快：
 
 損失函數不需要處理訓練集所有的數據，選取一個例子 **x^n**
 
-****L=(\hat y^n-(b+\sum w_ix_i^n))^2 \tag{10}****
-****\theta^i =\theta^{i-1}- \eta\triangledown L^n(\theta^{i-1}) \tag{11}****
+****L=(hat y^n-(b+sum w_ix_i^n))^2 tag{10}****
+****theta^i =theta^{i-1}- etatriangledown L^n(theta^{i-1}) tag{11}****
 
 此時不需要像之前那樣對所有的數據進行處理，只需要計算某一個例子的損失函數Ln，就可以趕緊update 梯度。
 
@@ -154,7 +154,7 @@ Adagrad 可以做的更好：
 ## Tip3：特徵縮放
 比如有個函數：
 
-****y=b+w_1x_1+w_2x_2 \tag{12}****
+****y=b+w_1x_1+w_2x_2 tag{12}****
 兩個輸入的分佈的範圍很不一樣，建​​議把他們的範圍縮放，使得不同輸入的範圍是一樣的。
 
 ![](res/chapter6-13.png)
@@ -179,19 +179,19 @@ Adagrad 可以做的更好：
 
 上圖每一列都是一個例子，裡面都有一組特徵。
 
-對每一個維度 **i**（綠色框）都計算平均數，記做 **m_i**；還要計算標準差，記做 **\sigma _i**。
+對每一個維度 **i**（綠色框）都計算平均數，記做 **m_i**；還要計算標準差，記做 **sigma _i**。
 
-然後用第**r** 個例子中的第**i** 個輸入，減掉平均數**m_i**，然後除以標準差**\sigma _i**，得到的結果是所有的維數都是**0**，所有的方差都是**1**
+然後用第**r** 個例子中的第**i** 個輸入，減掉平均數**m_i**，然後除以標準差**sigma _i**，得到的結果是所有的維數都是**0**，所有的方差都是**1**
 
 ## 梯度下降的理論基礎
 ### 問題
 當用梯度下降解決問題：
 
-****\theta^∗= \underset{ \theta }{\operatorname{arg\ max}} L(\theta) \tag1****
+****theta^∗= underset{ theta }{operatorname{arg max}} L(theta) tag1****
 
-每次更新參數 **\theta**，都得到一個新的 **\theta**，它都使得損失函數更小。即：
+每次更新參數 **theta**，都得到一個新的 **theta**，它都使得損失函數更小。即：
 
-****L(\theta^0) >L(\theta^1)>L(\theta^2)>···\tag{13}****
+****L(theta^0) >L(theta^1)>L(theta^2)>···tag{13}****
 
 上述結論正確嗎？
 
@@ -200,7 +200,7 @@ Adagrad 可以做的更好：
 ## 數學理論
 ![](res/chapter6-16.png)
 
-比如在 **\theta^0** 處，可以在一個小範圍的圓圈內找到損失函數細小的 **\theta^1**，不斷的這樣去尋找。
+比如在 **theta^0** 處，可以在一個小範圍的圓圈內找到損失函數細小的 **theta^1**，不斷的這樣去尋找。
 
 接下來就是如果在小圓圈內快速的找到最小值？
 
@@ -213,11 +213,11 @@ Adagrad 可以做的更好：
 若 **h(x)** 在 **x=x_0** 點的某個領域內有無限階導數（即無限可微分，infinitely differentiable），那麼在此領域內有：
 
 ****
-\begin{aligned}
-h(x) &= \sum_{k=0}^{\infty }\frac{h^k(x_0)}{k!}(x-x_0)^k \\
-& =h(x_0)+{h}'(x_0)(x−x_0)+\frac{h''(x_0)}{2!}(x−x_0)^2+⋯
-\tag{14}
-\end{aligned}
+begin{aligned}
+h(x) &= sum_{k=0}^{infty }frac{h^k(x_0)}{k!}(x-x_0)^k 
+& =h(x_0)+{h}'(x_0)(x−x_0)+frac{h''(x_0)}{2!}(x−x_0)^2+⋯
+tag{14}
+end{aligned}
 ****
 
 
@@ -244,14 +244,14 @@ h(x) &= \sum_{k=0}^{\infty }\frac{h^k(x_0)}{k!}(x-x_0)^k \\
 
 ![](res/chapter6-20.png)
 
-不考慮s的話，可以看出剩下的部分就是兩個向量**(\triangle \theta_1,\triangle \theta_2)** 和**(u,v)** 的內積，那怎樣讓它最小，就是和向量**(u,v)** 方向相反的向量
+不考慮s的話，可以看出剩下的部分就是兩個向量**(triangle theta_1,triangle theta_2)** 和**(u,v)** 的內積，那怎樣讓它最小，就是和向量**(u,v)** 方向相反的向量
 
 ![](res/chapter6-21.png)
 
 然後將u和v帶入。
 
 ![](res/chapter6-22.png)
-****L(\theta)\approx s+u(\theta_1 - a)+v(\theta_2 - b) \tag{14}****
+****L(theta)approx s+u(theta_1 - a)+v(theta_2 - b) tag{14}****
 
 發現最後的式子就是梯度下降的式子。但這裡用這種方法找到這個式子有個前提，泰勒展開式給的損失函數的估算值是要足夠精確的，而這需要紅色的圈圈足夠小（也就是學習率足夠小）來保證。所以理論上每次更新參數都想要損失函數減小的話，即保證式1-2 成立的話，就需要學習率足夠足夠小才可以。
 
