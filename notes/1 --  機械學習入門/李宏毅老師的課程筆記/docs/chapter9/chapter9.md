@@ -1,35 +1,34 @@
-## 作业描述
->  让机器预测到丰原站在下一个小时会观测到的PM2.5。举例来说，现在是2017-09-29 08：00：00 ，那么要预测2017-09-29 09：00：00丰原站的PM2.5值会是多少。
+## 作業描述
+> 讓機器預測到豐原站在下一個小時會觀測到的PM2.5。舉例來說，現在是2017-09-29 08：00：00 ，那麼要預測2017-09-29 09：00：00豐原站的PM2.5值會是多少。
 
-## 任务要求
+## 作業要求
 
-- 任务要求：**预测PM2.5的值**，我们将用**梯度下降法** (**Gradient Descent**) **预测 PM2.5** 的值 (**Regression** 回归问题)
-- 环境要求：
-  - 要求 **python3.5+**
-  - 只能用
-    - numpy
-    - scipy
-    - pandas
-  - 请用梯度下降**手写线性回归**
-  - 最好使用 **Public Simple Baseline**
-  - 对于想加载模型而并不想运行整个训练过程的人：
-    - 请上传训练代码并命名成 `train.py`
-    - 只要用梯度下降的代码就行了
+- 任務要求：**預測PM2.5的值**，我們將用**梯度下降法** (**Gradient Descent**) **預測PM2.5** 的值(**Regression** 回歸問題)
+- 環境要求：
+  - 要求 **python3.5+**
+  - 只能用
+    - numpy
+    - scipy
+    - pandas
+  - 請用梯度下降**手寫線性回歸**
+  - 最好使用 **Public Simple Baseline**
+  - 對於想加載模型而並不想運行整個訓練過程的人：
+    - 請上傳訓練代碼並命名成 `train.py`
+    - 只要用梯度下降的代碼就行了
 - 最佳要求：
-  - 要求 **python3.5+** 
-  - 任何库都可以用
-  - 在 **Kaggle** 上获得你选择的更高的分
-- 数据介绍：
-  本次作业使用豐原站的觀測記錄，分成 **train set** 跟 **test set**，train set 是豐原站每個月的前20天所有資料，test set則是從豐原站剩下的資料中取樣出來。
-  **train.csv**:每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
-  **test**.csv:從剩下的資料當中取樣出連續的10小時為一筆，前九小時的所有觀測數據當作feature，第十小時的PM2.5當作answer。一共取出240筆不重複的 test data，請根據feauure預測這240筆的PM2.5。
-- 请完成之后参考以下资料：
-  - Sample_code:https://github.com/datawhalechina/leeml-notes/tree/master/docs/Homework/HW_1
+  - 要求 **python3.5+**
+  - 任何庫都可以用
+  - 在 **Kaggle** 上獲得你選擇的更高的分
+- 數據介紹：
+  本次作業使用豐原站的觀測記錄，分成**train set** 跟**test set**，train set 是豐原站每個月的前20天所有資料，test set則是從豐原站剩下的資料中取樣出來。
+  **train.csv**:每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
+  **test**.csv:從剩下的資料當中取樣出連續的10小時為一筆，前九小時的所有觀測數據當作feature，第十小時的PM2.5當作answer。一共取出240筆不重複的 test data，請根據feauure預測這240筆的PM2.5。
+- 請完成之後參考以下資料：
+  - Sample_code:https://github.com/datawhalechina/leeml-notes/tree/master/docs/Homework/HW_1
 
 
-## 任务实现
+## 作業實現
 ### 方案1
-
 ```python
 
 '''
