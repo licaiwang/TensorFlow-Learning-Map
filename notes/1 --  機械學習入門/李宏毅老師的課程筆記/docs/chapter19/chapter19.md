@@ -33,6 +33,34 @@ def load_data():  # categorical_crossentropy
     x_test = np.random.normal(x_test)
     
     return (x_train, y_train), (x_test, y_test)
+    
+def main():
+    (x_train, y_train), (x_test, y_test) = load_data()
+
+    # define network structure
+    model = Sequential()
+    # add dropout
+    model.add(Dropout(0.5))
+    # activation ='relu' , 'sigmoid'
+    model.add(Dense(input_dim=28 * 28, units=600, activation='relu'))
+    # model.add(Dropout(0.5))
+    model.add(Dense(units=600, activation='relu'))
+    # model.add(Dropout(0.5))
+    model.add(Dense(units=10, activation='softmax'))
+
+    # set configurations
+    model.compile(loss='categorical_crossentropy',
+                  optimizer='adam', metrics=['accuracy'])
+    # loss = 'categorical_crossentropy','mse'
+    # train model
+    model.fit(x_train, y_train, batch_size=100, epochs=20)
+
+    # evaluate the model and output the accuracy
+    result_train = model.evaluate(x_train, y_train)
+    result_test = model.evaluate(x_test, y_test)
+    print('Train Acc:', result_train[1])
+    print('Test Acc:', result_test[1])
+main()
 ```
 ![在這裡插入圖片描述](./res/chapter19_1.png)
 
