@@ -10,19 +10,19 @@
 - [P6 梯度下降](docs/chapter6/chapter6.md)
 - [P7 梯度下降（用AOE演示）](https://www.youtube.com/watch?v=1_HBTJyWgNA&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=7)
 - [P8 梯度下降（用Minecraft演示）](https://www.youtube.com/watch?v=wzPAInDF_gI&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=8)
-- [P9 作業1-PM2.5預測]
-- [P10 概率分類模型]
-- [P11 logistic回歸]
-- [P12 作業2-贏家還是輸家]
-- [P13 深度學習簡介]
-- [P14 反向傳播]
-- [P15 深度學習初試]
-- [P16 Keras2.0]
-- [P17 Keras演示]
-- [P18 深度學習技巧]
-- [P19 Keras演示2]
-- [P20 Tensorflow 實現 Fizz Buzz]
-- [P21 卷積神經網絡]
+- [P9 作業1-PM2.5預測](docs/chapter9/chapter9.md)
+- [P10 概率分類模型](docs/chapter10/chapter10.md)
+- [P11 logistic回歸](docs/chapter11/chapter11.md)
+- [P12 作業2-贏家還是輸家](docs/chapter12/chapter12.md)
+- [P13 深度學習簡介](docs/chapter13/chapter13.md)
+- [P14 反向傳播](docs/chapter14/chapter14.md)
+- [P15 深度學習初試](docs/chapter15/chapter15.md)
+- [P16 Keras2.0](docs/chapter16/chapter16.md)
+- [P17 Keras演示](docs/chapter17/chapter17.md)
+- [P18 深度學習技巧](docs/chapter18/chapter18.md)
+- [P19 Keras演示2](docs/chapter19/chapter19.md)
+- [P20 Tensorflow 實現 Fizz Buzz](docs/chapter20/chapter20.md)
+- [P21 卷積神經網絡](docs/chapter21/chapter21.md)
 - [P22 為什麼要“深度”學習？ ]
 - [P23 半監督學習]
 - [P24 無監督學習-線性降維]
