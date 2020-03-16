@@ -1,5 +1,5 @@
 ## 手寫數字辨識 - 改善上一次失敗的例子
-deep learning這麼潮的東西，實現起來也很簡單。先上更新後的 Code
+先上更新後的 Code
 ```
 import numpy as np
 from keras.datasets import mnist
