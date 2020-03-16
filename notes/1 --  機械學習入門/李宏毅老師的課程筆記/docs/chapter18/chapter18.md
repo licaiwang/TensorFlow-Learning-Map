@@ -20,7 +20,7 @@
 
 如果在testing data performance不好，才是overfitting（注：training set上結果就不好，不能說是overfitting的問題）。
 
-**小結：如果training set上的結果變現不好，那麼就要去neural network在一些調整，如果在testing set表現的很好，就意味成功了。 **
+**小結：如果training set上的結果變現不好，那麼就要去neural network在一些調整，如果在testing set表現的很好，就意味成功了。**
 
 （tips：很多人容易忽視查看在training set上結果，是因為在機器學習中例如是用SVM等模型，很容易使得training set得到一個很好的結果，但是在深度學習中並不是這樣的。所以一定要記得查看training set 上的結果。不要看到所有不好的performance都是overfitting。）
 
