@@ -150,3 +150,15 @@ dropout 加在每個hidden layer，要知道dropout加入之後，train的效果
 ![在這裡插入圖片描述](./res/chapter19_10.png)
 
 不同的tip對效果有不同的影響，應該要多試試
+
+##總結
+1、batch_size=100,epochs=20為宜，batch_size過大會導致loss下降曲線過於平滑而卡在local minima、saddle point或plateau處，batch_size過小會導致update次數過多，運算量太大，速度緩慢，但可以帶來一定程度的準確率提高
+2、hidden layer數量不要太多，不然可能會發生vanishing gradient(梯度消失)，一般兩到三層為宜
+3、如果layer數量太多，則千萬不要使用sigmoid等縮減input影響的激活函數，應當選擇ReLU、Maxout等近似線性的activation function(layer數量不多也應該選這兩個)
+4、每一個hidden layer所包含的neuron數量，五六百為宜
+5、對於分類問題，loss function一定要使用cross entropy(categorical_crossentropy)，而不是mean square error(mse)
+6、優化器optimizer一般選擇adam，它綜合了RMSProp和Momentum，同時考慮了過去的gradient、現在的gradient，以及上一次的慣性
+7、如果testing data上準確率很低，training data上準確率比較高，可以考慮使用dropout，Keras的使用方式是在每一層hidden layer的後面加上一句model.add(Dropout(0.5))，其中0.5這個參數你自己定；注意，加了dropout之後在training set上的準確率會降低，但是在testing set上的準確率會提高，這是正常的
+8、如果input是圖片的pixel，注意對灰度值進行歸一化，即除以255，使之處於0～1之間
+9、最後的output最好同時輸出在training set和testing set上的準確率，以便於對症下藥
+
