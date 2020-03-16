@@ -1,57 +1,55 @@
+## 創建網絡
 
-## 创建网络
-
-假设我们要做的事情是手写数字辨识，那我们要建一个Network scratch，input是$28\ast 28$的dimension，其实就是说这是一张image，image的解析度是$28\ast28$，我们把它拉成长度是$28\ast 28$维的向量。output呢？现在做的是手写数字辨识，所以要决定它是0-9的哪个数字，output就是每一维对应的数字，所以output就是10维。中间假设你要两个layer，每个layer有500个hidden neuro，那么你会怎么做呢。
+假設我們要做的事情是手寫數字辨識，那我們要建一個Network scratch，input是28X28 的dimension，其實就是說這是一張image，image的解析度是28X28，我們把它拉成長度是28X28 維的向量。 output呢？現在做的是手寫數字辨識，所以要決定它是0-9的哪個數字，output就是每一維對應的數字，所以output就是10維。中間假設你要兩個layer，每個layer有500個hidden neuro，那麼你會怎麼做呢。
 
 ![](res/chapter16-1.png))
 
-如果用keras的话，你要先宣告一个Network，也就是首先你先宣告
+如果用keras的話，你要先宣告一個Network，也就是首先你先宣告
 ```
 model=Sequential()
 ```
-再来，你要把第一个hidden layer 加进去，你要怎么做呢？很简单，只要add就好
+再來，你要把第一個hidden layer 加進去，你要怎麼做呢？很簡單，只要add就好
 ```
 model.add(Dense(input_dim=28*28,units=500,activation='relu'))
 ```
-Dense意思就是说你加一个全连接网络，可以加其他的，比如加Con2d，就是加一个convolution layer，这些都很简单。input_dim是说输入的维度是多少，units表示hidden layer的neuro 数，activation就是激活函数，每个activation是一个简单的英文缩写，比如relu，softplus，softsign，sigmoid，tanh，hard_sigmoid，linear
-再加第二个layer，就不需再宣告input_dim，因为它的输入就是上一层的units，所以不需要再定义一次，在这，只需要声明units和activation
+Dense意思就是說你加一個全連接網絡，可以加其他的，比如加Con2d，就是加一個convolution layer，這些都很簡單。 input_dim是說輸入的維度是多少，units表示hidden layer的neuro 數，activation就是激活函數，每個activation是一個簡單的英文縮寫，比如relu，softplus，softsign，sigmoid，tanh，hard_sigmoid，linear
+再加第二個layer，就不需再宣告input_dim，因為它的輸入就是上一層的units，所以不需要再定義一次，在這，只需要聲明units和activation
 ```
 model.add(Dense(units=500,activation='relu'))
 ```
-最后一个layer，因为output是10维，所以units=10，activation一般选softmax，意味着输出每个dimension只会介于0-1之间，总和是1，就可以把它当做为一种几率的东西。
+最後一個layer，因為output是10維，所以units=10，activation一般選softmax，意味著輸出每個dimension只會介於0-1之間，總和是1，就可以把它當做為一種機率的東西。
 ```
 model.add(Dense(units=10,activation='softmax'))
 ```
 ## 配置
-第二过程你要做一下configuration，你要定义loss function，选一个optimizer，以及评估指标metrics，其实所有的optimizer都是Gradent descent based，只是有不同的方法来决定learning rate，比如Adam，SGD，RMSprop，Adagrad，Adalta，Adamax ，Nadam等，设完configuration之后你就可以开始train你的Network
+第二過程你要做一下configuration，你要定義loss function，選一個optimizer，以及評估指標metrics，其實所有的optimizer都是Gradent descent based，只是有不同的方法來決定learning rate，比如Adam，SGD，RMSprop ，Adagrad，Adalta，Adamax ，Nadam等，設完configuration之後你就可以開始train你的Network
 ```
 model.compile(loss='categorical crossentropy',optimizer='adam',metrics=['accuracy'])
 ```
 
-## 选择最好的方程
+## 選擇最好的方程
 ```
 model.fit(x_train,y_train,batch_size=100,epochs=20)
 ```
-call model.fit 方法，它就开始用Gradent Descent帮你去train你的Network，那么你要给它你的train_data input 和label，这里x_train代表image，y_train代表image的label，关于x_train和y_train的格式，你都要存成numpy array。那么x_train怎样表示呢，第一个轴表示example，第二个轴代表每个example用多长vecter来表示它。x_train就是一个matrix。y_train也存成一个二维matrix，第一个维度一样代表training examples，第二维度代表着现在有多少不同的case，只有一维是1，其他的都是0，每一维都对应一个数字，比如第0维对应数字0，如果第N维是1，对应的数字就是N。
+call model.fit 方法，它就開始用Gradent Descent幫你去train你的Network，那麼你要給它你的train_data input 和label，這裡x_train代表image，y_train代表image的label，關於x_train和y_train的格式，你都要存成numpy array。那麼x_train怎樣表示呢，第一個軸表示example，第二個軸代表每個example用多長vecter來表示它。 x_train就是一個matrix。 y_train也存成一個二維matrix，第一個維度一樣代表training examples，第二維度代表著現在有多少不同的case，只有一維是1，其他的都是0，每一維都對應一個數字，比如第0維對應數字0，如果第N維是1，對應的數字就是N。
 
 
 ![](res/chapter16-2.png)
 
 ## 使用模型
 
-- 存储和载入模型-Save and load models
-参考keras的说明，http://keras.io/getting-started/faq/#how-can-i-save-a-keras-model
+- 存儲和載入模型-Save and load models
+參考keras的說明，http://keras.io/getting-started/faq/#how-can-i-save-a-keras-model
 - 模型使用
-接下来你就要拿这个Network进行使用，使用有两个不同的情景，这两个不同的情景一个是evaluation，意思就是说你的model在test data 上到底表现得怎样，call evaluate这个函数，然后把x_test，y_test喂给它，就会自动给你计算出Accuracy。它会output一个二维的向量，第一个维度代表了在test set上loss，第二个维度代表了在test set上的accuracy，这两个值是不一样的。loss可能用cross_entropy，Accuraccy是对与不对，即正确率。
-	- case1
-	```
-	score = model.evaluate(x_test,y_test)
-	print('Total loss on Testiong Set : ',score[0])
-	print('Accuracy of Testiong Set : ',score[1])
-	```
-	第二种是做predict，就是系统上线后，没有正确答案的，call predict进行预测
-	- case 2
-	```
-	result = model.predict(x_test)
-	```
-
+接下來你就要拿這個Network進行使用，使用有兩個不同的情景，這兩個不同的情景一個是evaluation，意思就是說你的model在test data 上到底表現得怎樣，call evaluate這個函數，然後把x_test，y_test餵給它，就會自動給你計算出Accuracy。它會output一個二維的向量，第一個維度代表了在test set上loss，第二個維度代表了在test set上的accuracy，這兩個值是不一樣的。 loss可能用cross_entropy，Accuraccy是對與不對，即正確率。
+- case1
+```
+score = model.evaluate(x_test,y_test)
+print('Total loss on Testiong Set : ',score[0])
+print('Accuracy of Testiong Set : ',score[1])
+```
+第二種是做predict，就是系統上線後，沒有正確答案的，call predict進行預測
+- case 2
+```
+result = model.predict(x_test)
+```
