@@ -24,7 +24,7 @@
   **train.csv**:每個月前20天每個小時的氣象資料(每小時有18種測資)。共12個月。
   **test**.csv:從剩下的資料當中取樣出連續的10小時為一筆，前九小時的所有觀測數據當作feature，第十小時的PM2.5當作answer。一共取出240筆不重複的 test data，請根據feauure預測這240筆的PM2.5。
 - 請完成之後參考以下資料：
-  - Sample_code:https://github.com/datawhalechina/leeml-notes/tree/master/docs/Homework/HW_1
+  - [Sample_code](https://github.com/datawhalechina/leeml-notes/tree/master/docs/Homework/HW_1)
 
 
 - 特徵選擇
@@ -34,9 +34,14 @@
 - 模型建立
 
   建立線性回歸模型
+  
   $$
   y=b+\sum_{i=1}^{27} \mathcal{W}_{i} \times \mathcal{X}_{i} \\
-  等價於 \\
+  $$
+  
+  等價於
+  
+  $$
   \mathrm{y}=b+w_{1} \times x_{1}+w_{2} \times x_{2}+\cdots+w_{27} \times x_{27}
   $$
   
@@ -55,6 +60,7 @@
   設定學習率learning rate分別為0.000000001、0.0000001、0.000001時，比較不同的learning rate對損失函數收斂速度的影響
 
 - 模型評估
+
   $$
   \mathrm{Model_-Evaluation}=\frac{1}{n} \sum_{i=1}^{n}\left(y_{i}-y_{\text {ireal}}\right)^{2}
   $$
