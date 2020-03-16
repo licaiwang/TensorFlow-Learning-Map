@@ -2,44 +2,37 @@
 deep learning這麼潮的東西，實現起來也很簡單。首先是load_data進行數據載入處理。
 ```
 import numpy as np
-from keras.models import Sequential
-from keras.layers.core import Dense,Dropout,Activation
-from keras.optimizers import SGD,Adam
-from keras.utils import np_utils
 from keras.datasets import mnist
+from keras.layers import Conv2D, Flatten, MaxPooling2D
+from keras.layers.core import Activation, Dense, Dropout
+from keras.models import Sequential
+from keras.optimizers import SGD, Adam
+from keras.utils import np_utils
 
-def load_data():
-(x_train,y_train),(x_test,y_test)=mnist.load_data()
-number=10000
-x_train=x_train[0:number]
-y_train=y_train[0:number]
-x_train=x_train.reshape(number,28*28)
-x_test=x_test.reshape(x_test.shape[0],28*28)
-x_train=x_train.astype('float32')
-x_test=x_test.astype('float32')
-y_train=np_utils.to_categorical(y_train,10)
-y_test=np_utils.to_categorical(y_test,10)
-x_train=x_train
-x_test=x_test
-x_train=x_train/255
-x_test=x_test/255
-return (x_train,y_train),(x_test,y_test)
 
-(x_train,y_train),(x_test,y_test)=load_data()
+def load_data():  # categorical_crossentropy
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    number = 10000
+    x_train = x_train[0:number]
+    y_train = y_train[0:number]
+    x_train = x_train.reshape(number, 28 * 28)
+    x_test = x_test.reshape(x_test.shape[0], 28 * 28)
+    x_train = x_train.astype('float32')
+    x_test = x_test.astype('float32')
+    # convert class vectors to binary class matrices
+    y_train = np_utils.to_categorical(y_train, 10)
+    y_test = np_utils.to_categorical(y_test, 10)
+    x_train = x_train
+    x_test = x_test
+    
+    # 255是灰階的表示，除以 255 才能 normalize 到 0-1 之間
+    x_train = x_train / 255
+    x_test = x_test / 255
 
-model=Sequential()
-model.add(Dense(input_dim=28*28,units=633,activation='sigmoid'))
-model.add(Dense(units=633,activation='sigmoid'))
-model.add(Dense(units=633,activation='sigmoid'))
-model.add(Dense(units=10,activation='softmax'))
-
-model.compile(loss='mse',optimizer=SGD(lr=0.1),metrics=['accuracy'])
-
-model.fit(x_train,y_train,batch_size=100,epochs=20)
-
-result= model.evaluate(x_test,y_test)
-
-print('TEST ACC:',result[1])
+    # 加上 noise 擾亂原本的輸出，沒加 dropout 的話 Test ACC會掉到約 40%
+    x_test = np.random.normal(x_test)
+    
+    return (x_train, y_train), (x_test, y_test)
 ```
 ![在這裡插入圖片描述](./res/chapter19_1.png)
 
