@@ -151,7 +151,7 @@ dropout 加在每個hidden layer，要知道dropout加入之後，train的效果
 
 不同的tip對效果有不同的影響，應該要多試試
 
-## 總結：##
+### 總結：
 1、batch_size=100,epochs=20為宜，batch_size過大會導致loss下降曲線過於平滑而卡在local minima、saddle point或plateau處，batch_size過小會導致update次數過多，運算量太大，速度緩慢，但可以帶來一定程度的準確率提高
 
 2、hidden layer數量不要太多，不然可能會發生vanishing gradient(梯度消失)，一般兩到三層為宜
