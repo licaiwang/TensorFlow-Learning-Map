@@ -49,7 +49,7 @@ print('Acc：',result[1])
 
 ```
 
-![在這裡插入圖片描述](res/chapter20_1 .png)
+![在這裡插入圖片描述](res/chapter20_1.png)
 
 結果並沒有達到百分百正確率，然而並不會放棄，所以我們首先開一個更大的neure，把hidden neure 從100改到1000
 
