@@ -30,13 +30,17 @@ train.csv 、test.csv 每個 column 的定義為:
 13. hours-per-week
 14. native-country 
 15. make over 50K a year or not
+
 ![12-1](./res/chapter12-1.png)
 
 ## 抽取後的特徵
+
 - 離散數據進行one-hot編碼，如work_class,education...
 - 連續特徵保持不變，如age,capital_gain...
-- X_train,X_test 每個樣本包含106維特徵，一個樣本作為一行
-- Y_train:label=0 表示年薪低於等於50k,label=1 表示年薪高於50K
+- X_train,X_test 每個樣本包含 106 維特徵，一個樣本作為一行
+- Y_train:label=0 表示年薪低於等於 50k,label=1 表示年薪高於50K
+
 ![12-2](./res/chapter12-2.png)
+
 - [參考 Code](https://github.com/orbxball/ML2017/tree/master/hw2)
 
