@@ -28,7 +28,5 @@ native-country, make over 50K a year or not
 - X_train,X_test 每個樣本包含106維特徵，一個樣本作為一行
 - Y_train:label=0 表示年薪低於等於50k,label=1 表示年薪高於50K
 ![12-2](./res/chapter12-2.png)
-
-
-## [參考代碼](https://github.com/orbxball/ML2017/tree/master/hw2)
+- [參考 Code](https://github.com/orbxball/ML2017/tree/master/hw2)
 
