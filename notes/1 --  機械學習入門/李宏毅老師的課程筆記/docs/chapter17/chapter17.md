@@ -44,7 +44,7 @@ main()
 ```
 
 其中x_train是一個二維的向量，x_train.shape=(10000,784)，這個是什麼意思呢，就告訴我們現在train data一共有一萬筆，每筆由一個784維的vector所表示。 y_train也是一個二維向量，y_train.shape=(10000,10)，其中只有一維的數字是1，其餘的為0。結果如下圖
-![在這裡插入圖片描述](res/chapter17_1 .png)
+![在這裡插入圖片描述](res/chapter17_1.png)
 正確率只有11.35%，感覺不太行，這個時候就開始焦躁了，調一下參數~~~
 ## 調參過程
 ### 隱層神經元個數
@@ -54,9 +54,7 @@ model.add(Dense(units=689,activation='sigmoid'))
 model.add(Dense(units=689,activation='sigmoid'))
 model.add(Dense(units=10,activation='softmax'))
 ```
-![在這裡插入圖片描述](./res/chapter17_2.png)
-
-結果如上，似乎好一點了，那好一點就繼續~
+結果似乎好一點了，那好一點就繼續~
 ### 深度
 deep learning 就是很deep的樣子，那麼才三層，用for添加10層
 ```
