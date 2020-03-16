@@ -1,5 +1,5 @@
-## 初始代碼
-deep learning這麼潮的東西，實現起來也很簡單。首先是load_data進行數據載入處理。
+## 手寫數字辨識
+deep learning這麼潮的東西，實現起來也很簡單。
 ```
 import numpy as np
 from keras.models import Sequential
