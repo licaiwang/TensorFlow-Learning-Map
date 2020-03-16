@@ -1,7 +1,7 @@
 ## Fizz Buzz Google 面試題
 對數字101到1000做了labeling，即訓練數據xtrain.shape=(900,10)，每一個數字都是用二進位來表示，第一個數字是101，用二進位來表示即為[1, 0,1,0,0,1,1,0,0,0]，每一位表示2^(n-1)，n 表示左數第幾位。現在一共有四個case，[一般，Fizz，Buzz，Fizz Buzz]，所以y_train.shape=(900,10)，對應的維度用1表示，其他都為0
 
-## 代碼
+## Code
 ```
 from keras.layers.normalization import BatchNormalization
 from keras.models import Sequential
@@ -49,7 +49,7 @@ print('Acc：',result[1])
 
 ```
 
-![在這裡插入圖片描述](res/chapter20_1 .png)
+![在這裡插入圖片描述](res/chapter20_1.png)
 
 結果並沒有達到百分百正確率，然而並不會放棄，所以我們首先開一個更大的neure，把hidden neure 從100改到1000
 
