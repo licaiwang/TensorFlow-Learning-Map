@@ -70,6 +70,8 @@ model.add(Dense(units=10,activation='softmax'))
 
 哎，結果還是10%左右這樣子，然後你就開始焦躁不安。參數調來調去，發現什麼東西都沒有做出來，最後從入門到放棄這樣。
 
+[完成版](chapter19.md)
+
 ## 總結
 - deep learning 並不是越deep越好
 - 隱層Neure調整，對整體效果也不一定有助益
