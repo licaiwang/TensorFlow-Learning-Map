@@ -12,7 +12,7 @@
 
 由Barry Becker從1994年人口普查數據庫中提取，按照((AGE>16) && (AGI>100) && (AFNLWGT>1) && (HRSWK>0))條件過濾後，保持數據的干淨。
 
-[來源](https://archive.ics.uci.edu/ml/datasets/Adult)
+- [來源](https://archive.ics.uci.edu/ml/datasets/Adult)
 
 ## 特徵屬性描述
 數據一共包含13個特徵，一個年薪是否超過50K的label
