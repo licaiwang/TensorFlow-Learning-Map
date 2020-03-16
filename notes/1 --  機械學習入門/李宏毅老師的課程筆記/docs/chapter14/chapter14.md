@@ -1,4 +1,4 @@
-## 背景
+## 反向傳播（Backpropagation）
 ### 梯度下降
 ![](res/chapter14-1.png)
 
