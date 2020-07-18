@@ -23,7 +23,7 @@
 - [P19 Keras演示2](docs/chapter19/chapter19.md)
 - [P20 Tensorflow 實現 Fizz Buzz](docs/chapter20/chapter20.md)
 - [P21 卷積神經網絡](docs/chapter21/chapter21.md)
-- [P22 為什麼要“深度”學習？ ]
+- [P22 為什麼要“深度”學習？ ](docs/chapter22/chapter22.md)
 - [P23 半監督學習]
 - [P24 無監督學習-線性降維]
 - [P25 無監督學習-詞嵌入]
