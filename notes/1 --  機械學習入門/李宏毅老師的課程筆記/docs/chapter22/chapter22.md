@@ -1,235 +1,231 @@
 
 
-##  问题1：越深越好？
+## 問題1：越深越好？
 
 ![](res/chapter22-1.png)
 
-learning从一层到七层，error rate在不断的下降。能看出network越深，参数越多，performance较也越好。
+learning從一層到七層，error rate在不斷的下降。能看出network越深，參數越多，performance較也越好。
 
-## 问题2：矮胖结构 v.s. 高瘦结构
-**真正比较deep和shallow**
+## 問題2：矮胖結構 v.s. 高瘦結構
+**真正比較deep和shallow**
 
 ![](res/chapter22-2.png)
 
-比较shallow model较好还是deep model较好，在比较的时候一个前提就是调整shallow和Deep让他们的参数是一样多，这样就会得到一个矮胖的模型和高瘦的模型。
+比較shallow model較好還是deep model較好，在比較的時候一個前提就是調整shallow和Deep讓他們的參數是一樣多，這樣就會得到一個矮胖的模型和高瘦的模型。
 
 ![](res/chapter22-3.png)
 
-这个实验的后半段的实验结果是：我们用5层hidden layer，每层2000个neural，得到的error rate是17.2%（error rate是越小越好的）而用相对应的一层的模型，得到的错误率是22.5%，这两个都是对应的拥有相似参数个数的模型。继续看下面的4634个参数和16k个参数，如果你只是单纯的增加parameters，是让network变宽不是变高的话，其实对performance的帮助是比较小的。
+這個實驗的後半段的實驗結果是：我們用5層hidden layer，每層2000個neural，得到的error rate是17.2%（error rate是越小越好的）而用相對應的一層的模型，得到的錯誤率是22.5%，這兩個都是對應的擁有相似參數個數的模型。繼續看下面的4634個參數和16k個參數，如果你只是單純的增加parameters，是讓network變寬不是變高的話，其實對performance的幫助是比較小的。
 
-所以如果把network变高对performance是很有帮助的，network变宽对performance帮助没有那么好的
+所以如果把network變高對performance是很有幫助的，network變寬對performance幫助沒有那麼好的
 
 
 
-## 引入模块化
+## 引入模塊化
 
-问题1：为什么变高比变宽好呢？
+問題1：為什麼變高比變寬好呢？
 
 ![](res/chapter22-4.png)
 
-我们在做deep learning的时候，其实我们是在模块化这件事。我们在main function时，我们会写一些sub function,一层一层结构化的架构。有一些function是可以共用的，就像一个模型，需要时候去用它减小复杂度(如图所示)
+我們在做deep learning的時候，其實我們是在模塊化這件事。我們在main function時，我們會寫一些sub function,一層一層結構化的架構。有一些function是可以共用的，就像一個模型，需要時候去用它減小複雜度(如圖所示)
 
 
 ![](res/chapter22-5.png)
 
-在 machine learning上，可以想象有这样的test。我们现在要做影像分类，我们把image分为四类(每个类别都有一些data)，然后去train 四个classifier。但问题是boys with long hair的data较少(没有太多的training data)，所以这个boys with long hair的classifier就比较weak(performance比较差)
+在 machine learning上，可以想像有這樣的test。我們現在要做影像分類，我們把image分為四類(每個類別都有一些data)，然後去train 四個classifier。但問題是boys with long hair的data較少(沒有太多的training data)，所以這個boys with long hair的classifier就比較weak(performance比較差)
 
-解决方法：利用模组化的概念(modularization)的思想
+解決方法：利用模組化的概念(modularization)的思想
 
 ![](res/chapter22-6.png)
 
-假设我们先不去解那个问题，而是把原来的问题切成比较小的问题。比如说，我们先classifier，这些classifier的工作就是决定有没有一种特征出现。
-现在就是不直接去分类长头发男生还是短头发男生，而是我们先输入一张图片，判断是男生还是女生和是长头发还是短头发，虽然说长头发的男生很少，但通过女生的数据和男生的数据都很多，虽然长头发的数据很少，但是短发的人和长发的人的数据都很多。所以，这样训练这些基分类器就不会训练的太差(有足够的数据去训练)
+假設我們先不去解那個問題，而是把原來的問題切成比較小的問題。比如說，我們先classifier，這些classifier的工作就是決定有沒有一種特徵出現。
+現在就是不直接去分類長頭髮男生還是短頭髮男生，而是我們先輸入一張圖片，判斷是男生還是女生和是長頭髮還是短頭髮，雖然說長頭髮的男生很少，但通過女生的數據和男生的數據都很多，雖然長頭髮的數據很少，但是短髮的人和長發的人的數據都很多。所以，這樣訓練這些基分類器就不會訓練的太差(有足夠的數據去訓練)
 
 ![](res/chapter22-7.png)
 
-现在我们要解决真正问题的时候，你的每个分类器就可以去参考输出的基本特征，最后要下决定的分类器，它是把前面的基分类器当做模组，每一个分类器都共用同一组模型(只是用不同的方式来使用它而已)。对分类器来说，它看到前面的基分类器告诉它说是长头发是女生，这个分类器的输出就是yes，反之就是no。
+現在我們要解決真正問題的時候，你的每個分類器就可以去參考輸出的基本特徵，最後要下決定的分類器，它是把前面的基分類器當做模組，每一個分類器都共用同一組模型(只是用不同的方式來使用它而已)。對分類器來說，它看到前面的基分類器告訴它說是長頭髮是女生，這個分類器的輸出就是yes，反之就是no。
 
-所以他们可以对后面的classifier来说就可以利用前面的classifier(中间)，所以它就可以用比较少的训练数据就可以把结果训练好。
+所以他們可以對後面的classifier來說就可以利用前面的classifier(中間)，所以它就可以用比較少的訓練數據就可以把結果訓練好。
 
-## 深度学习
+## 深度學習
 
-问题2：深度学习和模组化有什么关系？
+問題2：深度學習和模組化有什麼關係？
 
 ![](res/chapter22-8.png)
-每一层neural可以被看做是一个basic classifier，第一层的neural就是最基分类器，第二层的neural是比较复杂的classifier，把第一层basic classifier 的output当做第二层的input(把第一层的classifier当做module)，第三层把第二层当做module，以此类推。
+每一層neural可以被看做是一個basic classifier，第一層的neural就是最基分類器，第二層的neural是比較複雜的classifier，把第一層basic classifier 的output當做第二層的input(把第一層的classifier當做module)，第三層把第二層當做module，以此類推。
 
-在做deep learning的时候，如何做模组化这件事，是机器自动学到的。
+在做deep learning的時候，如何做模組化這件事，是機器自動學到的。
 
-做modularization这件事，把我们的模型变简单了(把本来复杂的问题变得简单了)，把问题变得简单了，就算训练数据没有那么多，我们也就可以把这个做好
+做modularization這件事，把我們的模型變簡單了(把本來複雜的問題變得簡單了)，把問題變得簡單了，就算訓練數據沒有那麼多，我們也就可以把這個做好
 
-## 使用语音识别举例
+## 使用語音識別舉例
 
-在语音上我们为什么会用到模组化的概念
+在語音上我們為什麼會用到模組化的概念
 
 ![](res/chapter22-9.png)
-当你说一句：what do you think，这句话其实就是由一组phoneme(音素)所组成的。同样的phoneme可能会有不太一样的发音。当你发d-uw的u时和发y-uw的u时，你心里想的是同一个phoneme，心里想要发的都是-uw。但是因为人类口腔器官的限制，所以你没办法每次发的-uw都是一样的。因为前面和后面都接了其他的phoneme，因为人类发音口腔器官的限制，你的phoneme发音会受到前后的影响。为了表达这件事情，我们会给同样的phoneme不同的model，这就是Tri-phone。
+當你說一句：what do you think，這句話其實就是由一組phoneme(音素)所組成的。同樣的phoneme可能會有不太一樣的發音。當你發d-uw的u時和發y-uw的u時，你心裡想的是同一個phoneme，心裡想要發的都是-uw。但是因為人類口腔器官的限制，所以你沒辦法每次發的-uw都是一樣的。因為前面和後面都接了其他的phoneme，因為人類發音口腔器官的限制，你的phoneme發音會受到前後的影響。為了表達這件事情，我們會給同樣的phoneme不同的model，這就是Tri-phone。
 
-Tri-phone表达是这样的，你把这个-uw加上前面的phoneme和后面的phoneme，跟这个-uw加上前面phoneme和后面的phonemeth，就是Tri-phone(这不是考虑三个phone的意思)
+Tri-phone表達是這樣的，你把這個-uw加上前面的phoneme和後面的phoneme，跟這個-uw加上前面phoneme和後面的phonemeth，就是Tri-phone(這不是考慮三個phone的意思)
 
 
-这个意思是说，现在一个phone用不同的model来表示，一个phoneme它的constant phone不一样,我们就要不同model来模拟描述这个phoneme。
+這個意思是說，現在一個phone用不同的model來表示，一個phoneme它的constant phone不一樣,我們就要不同model來模擬描述這個phoneme。
 
-一个phoneme可以拆成几个state，state有几个通常自己定义，通常就定义为三个state
+一個phoneme可以拆成幾個state，state有幾個通常自己定義，通常就定義為三個state
 
-### 语音辨识：
+### 語音辨識：
 
 ![](res/chapter22-10.png)
-语音辨识特别的复杂，现在来讲第一步，第一步要做的事情就是把acoustic feature转成state。所谓的acoustic feature简单说起来就是声音讯号发生一段wave phone，这这个wave phone通常取一段window(这个window通常不是太大)。一个window里面就用一个feature来描述里面的特性，那这个就是一个acoustic feature。你会在这个声音讯号上每隔一段时间来取一个window，声音讯号就变成一串的vector sequence。在语音辨识的第一阶段，你需要做的就是决定了每一个acoustic feature属于哪一个state。把state转成phone，phoneme，在把phoneme转成文字，接下来考虑同音异字的问题，这不是我们今天讨论的问题。
+語音辨識特別的複雜，現在來講第一步，第一步要做的事情就是把acoustic feature轉成state。所謂的acoustic feature簡單說起來就是聲音訊號發生一段wave phone，這這個wave phone通常取一段window(這個window通常不是太大)。一個window裡面就用一個feature來描述裡面的特性，那這個就是一個acoustic feature。你會在這個聲音訊號上每隔一段時間來取一個window，聲音訊號就變成一串的vector sequence。在語音辨識的第一階段，你需要做的就是決定了每一個acoustic feature屬於哪一個state。把state轉成phone，phoneme，在把phoneme轉成文字，接下來考慮同音異字的問題，這不是我們今天討論的問題。
 
-## 传统的实现方法：HMM-GMM
+## 傳統的實現方法：HMM-GMM
 
 ![](res/chapter22-11.png)
-在deep learning之前和之后，语音辨识有什么不同，这时候你就更能体会deep learning会在语音辨识有显著的成果。
+在deep learning之前和之後，語音辨識有什麼不同，這時候你就更能體會deep learning會在語音辨識有顯著的成果。
 
-我们要机器做的是，在第一阶段做的是分类这件事，就是决定一个acoustic feature属于哪一个state，传统方式是做GNN
+我們要機器做的是，在第一階段做的是分類這件事，就是決定一個acoustic feature屬於哪一個state，傳統方式是做GNN
 
-我们假设每一个state就是一个stationary，属于每一个state的acoustic feature的分布是stationary，所以你可以用model来描述。
+我們假設每一個state就是一個stationary，屬於每一個state的acoustic feature的分佈是stationary，所以你可以用model來描述。
 
-比如第一个state，可以用GNN来描述；另外一个state，可以用另外一个GNN来描述。这时候给你一个feature，你就可以说每一个acoustic feature从每一个state产生出来的几率，这个就叫做Gaussian Mixture  Model
+比如第一個state，可以用GNN來描述；另外一個state，可以用另外一個GNN來描述。這時候給你一個feature，你就可以說每一個acoustic feature從每一個state產生出來的機率，這個就叫做Gaussian Mixture Model
 
-仔细一想，这一招根本不太work，因为这个Tri-phone的数目太多了。一般的语言(中文、英文)都有将近30、40phone。在Tri-phone里面，每一个phoneme随着它constant不同，你要用不同的model。到底有多少个Tri-phone，你有30的三次方的Tri-phone(27000)，每个Tri-phone有三个state，所以，你有数万的state，而你每一个state都要用Gaussian Mixture Model来描述，参数太多了。
+仔細一想，這一招根本不太work，因為這個Tri-phone的數目太多了。一般的語言(中文、英文)都有將近30、40phone。在Tri-phone裡面，每一個phoneme隨著它constant不同，你要用不同的model。到底有多少個Tri-phone，你有30的三次方的Tri-phone(27000)，每個Tri-phone有三個state，所以，你有數万的state，而你每一個state都要用Gaussian Mixture Model來描述，參數太多了。
 
 ![](res/chapter22-12.png)
 
-有一些state，他们会共用同一个model distribution，这件事叫做Tied-state。加入说，我们在写一些程式的时候，不同的state名称就好像是pointer，那不同的pointer他们可能会指向同样的distribution。所以有一些state，它的distribution是共用的，有些是不共用的。那到底哪些事共用的，哪些不是共用的，那么就变成你要凭着经验和一些语言学的知识来决定哪些state是要共用的
+有一些state，他們會共用同一個model distribution，這件事叫做Tied-state。加入說，我們在寫一些程式的時候，不同的state名稱就好像是pointer，那不同的pointer他們可能會指向同樣的distribution。所以有一些state，它的distribution是共用的，有些是不共用的。那到底哪些事共用的，哪些不是共用的，那麼就變成你要憑著經驗和一些語言學的知識來決定哪些state是要共用的
 
-这些是不够用的，如果只分state distribution是共用的或不共用的，这样就太粗了。所以就有人开始提一些想法：如何让它部分共用等等。
+這些是不夠用的，如果只分state distribution是共用的或不共用的，這樣就太粗了。所以就有人開始提一些想法：如何讓它部分共用等等。
 
 ![](res/chapter22-13.png)
 
-仔细想想刚才讲的HMM-GMM的方式，所有困惑的是state是independently,这件事是不effection对model人类的声音来说。
+仔細想想剛才講的HMM-GMM的方式，所有困惑的是state是independently,這件事是不effection對model人類的聲音來說。
 
-想看人类的声音来说，不同的phoneme虽然归为不同的因素，分类归类为不同的class，但这些phoneme不是完全无关的。这些都是人类发音器官generate出来的，它们中间是有根据人类发音器官发音的方式，之间是有关系的
+想看人類的聲音來說，不同的phoneme雖然歸為不同的因素，分類歸類為不同的class，但這些phoneme不是完全無關的。這些都是人類發音器官generate出來的，它們中間是有根據人類發音器官發音的方式，之間是有關係的
 
-举例来说，在这张图上画出了人类语言所有的母音，那么这个母音的发音其实就只是受到三件事的影响。一个是你舌头前后的位置，一个是你舌头上下的位置，还有一个是你的嘴型。(母音就只受到这三件事的影响)在这张图你可以找到最常见的母音(i,e,a,u,o)i,e,a,u,0它们之间的差别就是当你从a发到e发到i的时候，你的舌头是由往上的。i跟u的差别是你的舌头在前后的区别。你可能感觉不要舌头的位置在哪里，你要知道的是舌头的位置是不是真的跟这个图上一样，你可以在对着镜子喊a,e,i,u,o，你就会发现你舌头的位置就跟这个图上的形状一模一样的。
+舉例來說，在這張圖上畫出了人類語言所有的母音，那麼這個母音的發音其實就只是受到三件事的影響。一個是你舌頭前後的位置，一個是你舌頭上下的位置，還有一個是你的嘴型。 (母音就只受到這三件事的影響)在這張圖你可以找到最常見的母音(i,e,a,u,o)i,e,a,u,0它們之間的差別就是當你從a發到e發到i的時候，你的舌頭是由往上的。 i跟u的差別是你的舌頭在前後的區別。你可能感覺不要舌頭的位置在哪裡，你要知道的是舌頭的位置是不是真的跟這個圖上一樣，你可以在對著鏡子喊a,e,i,u,o，你就會發現你舌頭的位置就跟這個圖上的形狀一模一樣的。
 
-这这个图上，同一个位置的母音代表说舌头的位置是一样的但是嘴型是不一样的。比如说，我们看最左上角的母音，一个是i一个是y，i跟y的差别就是嘴型不一样的。如果是i的话嘴型是扁的，如果是y的话嘴型是圆的，所以改变嘴型就可以从i到y。
+這這個圖上，同一個位置的母音代表說舌頭的位置是一樣的但是嘴型是不一樣的。比如說，我們看最左上角的母音，一個是i一個是y，i跟y的差別就是嘴型不一樣的。如果是i的話嘴型是扁的，如果是y的話嘴型是圓的，所以改變嘴型就可以從i到y。
 
-所以这个不同的phoneme之间是有关系的，如果说每个phoneme都搞一个model，这件事是没有效率的。
+所以這個不同的phoneme之間是有關係的，如果說每個phoneme都搞一個model，這件事是沒有效率的。
 
-## 深度学习的实现方法 DNN
+## 深度學習的實現方法 DNN
 
 ![](res/chapter22-14.png)
 
-如果是deep learning的话，那你就是去learn一个neural network，这个neural network的input就是一个acoustic feature，output就是这个feature属于每一个state的几率。就是一个很单纯classification probably跟作业上做的影像是没有差别的。learn一个DNN，input是一个acoustic feature，然后output就是告诉你说，acoustic feature属于每个state的几率，那最关键的一点是所有的state都共用同一个DNN，在这整个辨识里面就做一个DNN而已，你没有每一个state都有一个DNN。
+如果是deep learning的話，那你就是去learn一個neural network，這個neural network的input就是一個acoustic feature，output就是這個feature屬於每一個state的機率。就是一個很單純classification probably跟作業上做的影像是沒有差別的。 learn一個DNN，input是一個acoustic feature，然後output就是告訴你說，acoustic feature屬於每個state的機率，那最關鍵的一點是所有的state都共用同一個DNN，在這整個辨識裡面就做一個DNN而已，你沒有每一個state都有一個DNN。
 
-所以就有人说，有些人是没有想清楚的这个deep learning到底是power在哪里，从GMM到deep learning厉害的地方就是本来GMM通常也就64Gauusian matrix，那DNN有10层，每层都有1000个neural，参数很多，参数变多performance就会变好，这是一种暴力碾压的方法。
+所以就有人說，有些人是沒有想清楚的這個deep learning到底是power在哪裡，從GMM到deep learning厲害的地方就是本來GMM通常也就64Gauusian matrix，那DNN有10層，每層都有1000個neural，參數很多，參數變多performance就會變好，這是一種暴力碾壓的方法。
 
-其实DNN不是暴力碾压的方法，你仔细想想看，在做HMM-GMM的时候，你说GMM有64个matrix觉得很简单，那其实是每一个state都有一个Gauusian matrix，真正合起来那参数是多的不得了的。如果你仔细去算一下GMM用的参数和DNN用的参数，在不同的test去测这件事情，他们的参数你就会发现几乎是差不多多的。DNN几乎是一个很大的model，GMM是很多很小的model，但将这两个比较参数量是差不多多的。但是DNN是将所有的state通通用同一个model来做分类，会使有效率的方法。
+其實DNN不是暴力碾壓的方法，你仔細想想看，在做HMM-GMM的時候，你說GMM有64個matrix覺得很簡單，那其實是每一個state都有一個Gauusian matrix，真正合起來那參數是多的不得了的。如果你仔細去算一下GMM用的參數和DNN用的參數，在不同的test去測這件事情，他們的參數你就會發現幾乎是差不多多的。 DNN幾乎是一個很大的model，GMM是很多很小的model，但將這兩個比較參數量是差不多多的。但是DNN是將所有的state通通用同一個model來做分類，會使有效率的方法。
 
-## 两种方法的对比 GMM v.s. DNN
+## 兩種方法的對比 GMM v.s. DNN
 
 ![](res/chapter22-15.png)
-举例来说，如果你今天把一个DNN它的某一个hidden layer拿出来，然后把那个hidden layer假设有1000个neural你没有办法分析它，但是你可以把那1000个layer的output降维降到二维。所以在这个图上面呢，一个点代表一个acoustic feature，然后它通过DNN以后，把这个output降到二维，可以发现它的分布是这样的。
+舉例來說，如果你今天把一個DNN它的某一個hidden layer拿出來，然後把那個hidden layer假設有1000個neural你沒有辦法分析它，但是你可以把那1000個layer的output降維降到二維。所以在這個圖上面呢，一個點代表一個acoustic feature，然後它通過DNN以後，把這個output降到二維，可以發現它的分佈是這樣的。
 
-在这个图上的颜色代表什么意思呢？这边颜色其实就是a,e,i,o,u这样，特别把这五个母音跟左边这个图用相同的颜色框起来。那你会神奇的发现，左边这五个母音的分布跟右边的图几乎是一样的。所以你可以发现DNN做的事情比较low layer的事情它其实是在它并不是真的要马上去侦测这个发音是属于哪个state。它的做事是它先观察说，当你听到这个发音的时候，人是用什么方式在发这个声音的，它的石头的位置在哪里(舌头的位置是高还是低呢，舌头位置是在前还是后呢等等)。然后lower layer比较靠近input layer先知道发音的方式以后，接下来的layer在根据这个结果去说现在的发音是属于哪个state/phone。所以所有的phone会用同一组detector。也就是这些lower layer是人类发音方式的detector，而所有phone的侦测都用是同一组detector完成的，所有phone的侦测都share(承担)同一组的参数，所以这边就做到模组化这件事情。当你做模组化的事情，你是要有效率的方式来使用你的参数。
+在這個圖上的顏色代表什麼意思呢？這邊顏色其實就是a,e,i,o,u這樣，特別把這五個母音跟左邊這個圖用相同的顏色框起來。那你會神奇的發現，左邊這五個母音的分佈跟右邊的圖幾乎是一樣的。所以你可以發現DNN做的事情比較low layer的事情它其實是在它並不是真的要馬上去偵測這個發音是屬於哪個state。它的做事是它先觀察說，當你聽到這個發音的時候，人是用什麼方式在發這個聲音的，它的石頭的位置在哪裡(舌頭的位置是高還是低呢，舌頭位置是在前還是後呢等等)。然後lower layer比較靠近input layer先知道發音的方式以後，接下來的layer在根據這個結果去說現在的發音是屬於哪個state/phone。所以所有的phone會用同一組detector。也就是這些lower layer是人類發音方式的detector，而所有phone的偵測都用是同一組detector完成的，所有phone的偵測都share(承擔)同一組的參數，所以這邊就做到模組化這件事情。當你做模組化的事情，你是要有效率的方式來使用你的參數。
 
 ## 普遍性定理
 
 ![](res/chapter22-16.png)
 
-过去有一个理论告诉我们说，任何continuous function，它都可以用一层neural network来完成(只要那一层只要够宽的话)。这是90年代，很多人放弃做deep learning的原因，只要一层hidden layer就可以完成所有的function(一层hidden layer就可以做所有的function)，那做deep learning的意义何在呢？，所以很多人说做deep是很没有必要的，我们只要一个hidden layer就好了。
+過去有一個理論告訴我們說，任何continuous function，它都可以用一層neural network來完成(只要那一層只要夠寬的話)。這是90年代，很多人放棄做deep learning的原因，只要一層hidden layer就可以完成所有的function(一層hidden layer就可以做所有的function)，那做deep learning的意義何在呢？ ，所以很多人說做deep是很沒有必要的，我們只要一個hidden layer就好了。
 
-但是这个理论没有告诉我们的是，它只告诉我们可能性，但是它没有告诉我们说要做到这件事情到底有多有效率。没错，你只要有够多的参数，hidden layer够宽，你就可以描述任何的function。但是这个理论没有告诉我们的是，当我们用这一件事(我们只用一个hidde layer来描述function的时候)它其实是没有效率的。当你有more layer(high structure)你用这种方式来描述你的function的时候，它是比较有效率的。
+但是這個理論沒有告訴我們的是，它只告訴我們可能性，但是它沒有告訴我們說要做到這件事情到底有多有效率。沒錯，你只要有夠多的參數，hidden layer夠寬，你就可以描述任何的function。但是這個理論沒有告訴我們的是，當我們用這一件事(我們只用一個hidde layer來描述function的時候)它其實是沒有效率的。當你有more layer(high structure)你用這種方式來描述你的function的時候，它是比較有效率的。
 
-## 举例
+## 舉例
 
-### 使用逻辑电路举例
+### 使用邏輯電路舉例
 
-Analogy(当你刚才模组化的事情没有听明白的话，这时候举个例子)
+Analogy(當你剛才模組化的事情沒有聽明白的話，這時候舉個例子)
 
 ![](res/chapter22-17.png)
-逻辑电路(logistic circuits)跟neural network可以类比。在逻辑电路里面是有一堆逻辑闸所构成的在neural network里面，neural是有一堆神经元所构成的。若你有修过逻辑电路的话，你会说其实只要两层逻辑闸你就可以表示任何的Boolean function，那有一个hidden layer的neural network(一个neural network其实是两层，input，output)可以表示任何的continue function。
+邏輯電路(logistic circuits)跟neural network可以類比。在邏輯電路里面是有一堆邏輯閘所構成的在neural network裡面，neural是有一堆神經元所構成的。若你有修過邏輯電路的話，你會說其實只要兩層邏輯閘你就可以表示任何的Boolean function，那有一個hidden layer的neural network(一個neural network其實是兩層，input，output)可以表示任何的continue function。
 
-虽然我们用两层逻辑闸就描述任何的Boolean function，但实际上你在做电路设计的时候，你根本不可能会这样做。当你不是用两层逻辑闸而是用很多层的时候，你拿来设计的电路是比较有效率的(虽然两层逻辑闸可以做到同样的事情，但是这样是没有效率的)。若如果类比到neural network的话，其实是一样的，你用一个hidden layer可以做到任何事情，但是用多个hidden layer是比较有效率的。你用多层的neural network，你就可以用比较少的neural就完成同样的function，所以你就会需要比较少的参数，比较少的参数意味着不容易overfitting或者你其实是需要比较少的data，完成你现在要train的任务。(很多人的认知是deep learning就是很多data硬碾压过去，其实不是这样子的，当我们用deep learning的时候，其实我们可以用比较时少的data就可以达到同样的任务)
+雖然我們用兩層邏輯閘就描述任何的Boolean function，但實際上你在做電路設計的時候，你根本不可能會這樣做。當你不是用兩層邏輯閘而是用很多層的時候，你拿來設計的電路是比較有效率的(雖然兩層邏輯閘可以做到同樣的事情，但是這樣是沒有效率的)。若如果類比到neural network的話，其實是一樣的，你用一個hidden layer可以做到任何事情，但是用多個hidden layer是比較有效率的。你用多層的neural network，你就可以用比較少的neural就完成同樣的function，所以你就會需要比較少的參數，比較少的參數意味著不容易overfitting或者你其實是需要比較少的data ，完成你現在要train的任務。 (很多人的認知是deep learning就是很多data硬碾壓過去，其實不是這樣子的，當我們用deep learning的時候，其實我們可以用比較時少的data就可以達到同樣的任務)
 
 ![](res/chapter22-18.png)
-那我们再从逻辑闸举一个实际的例子，假设我们要做parity check(奇偶性校验检查)(你希望input一串数字，若如果里面出现1的数字是偶数的话，它的output就是1；如果是奇数的话，output就是0).假设你input sequence的长度总共有d个bits，用两层逻辑闸，理论可以保证你要$O(2^d)$次方的gates才能描述这样的电路。但是你用多层次的架构的话，你就可以需要比较少的逻辑闸就可以做到parity check这件事情，
+那我們再從邏輯閘舉一個實際的例子，假設我們要做parity check(奇偶性校驗檢查)(你希望input一串數字，若如果裡面出現1的數字是偶數的話，它的output就是1；如果是奇數的話，output就是0).假設你input sequence的長度總共有d個bits，用兩層邏輯閘，理論可以保證你要$O(2^d)$次方的gates才能描述這樣的電路。但是你用多層次的架構的話，你就可以需要比較少的邏輯閘就可以做到parity check這件事情，
 
-举例来说，你可以把好几个XNOR接在一起(input和output真值表在右上角)做parity check这件事。当你用多层次的架构时，你只需要$O(d)$gates你就可以完成你现在要做的这个任务，对neural network来说也是一样的，可以用比较的neural就能描述同样的function。
+舉例來說，你可以把好幾個XNOR接在一起(input和output真值表在右上角)做parity check這件事。當你用多層次的架構時，你只需要$O(d)$gates你就可以完成你現在要做的這個任務，對neural network來說也是一樣的，可以用比較的neural就能描述同樣的function。
 
-### 使用剪窗花举例
+### 使用剪窗花舉例
 
 ![](res/chapter22-19.png)
-一个日常生活中的例子，这个例子是剪窗花(折起来才去剪，而不是真的去把这个形状的花样去剪出来，这样就太麻烦了)，这个跟deep learning有什么关系呢？
+一個日常生活中的例子，這個例子是剪窗花(折起來才去剪，而不是真的去把這個形狀的花樣去剪出來，這樣就太麻煩了)，這個跟deep learning有什麼關係呢？
 
 ![](res/chapter22-20.png)
 
-这个跟deep learning 有什么关系呢，我们用之前讲的例子来做比喻，假设我们现在input的点有四个(红色的点是一类，蓝色的点是一类)。我们之前说，如果你没有hidden layer的话，如果你是linear model，你怎么做都没有办法把蓝色的点和红色的点分来开，当你加上hidden layer会发生怎样的事呢？当你加hidde layeer的时候，你就做了features transformation。你把原来的$x_1$,$x_2$转换到另外一个平面$x_1$plane,$x_2$plane(蓝色的两个点是重合在一起的，如右图所示)，当你从左下角的图通过hidden layer变到右下角图的时候，其实你就好像把原来这个平面对折了一样，所以两个蓝色的点重合在了一起。这就好像是说剪窗花的时候对折一样，如果你在图上戳一个洞，那么当你展开的时候，它在这些地方都会有一些洞(看你对折几叠)。如果你把剪窗花的事情想成training。你把这件事想成是根据我们的training data，training data告诉我们说有画斜线的部分是positive，没画斜线的部分是negative。假设我们已经把这个已经折起来的时候，这时候training data只要告诉我们说，在这个范围之内(有斜线)是positive，在这个区间(无斜线)展开之后就是复杂的图样。training data告诉我们比较简单的东西，但是现在有因为对折的关系，展开以后你就可以有复杂的图案(或者说你在这上面戳个洞，在就等同于在其他地方戳了个洞)。
+這個跟deep learning 有什麼關係呢，我們用之前講的例子來做比喻，假設我們現在input的點有四個(紅色的點是一類，藍色的點是一類)。我們之前說，如果你沒有hidden layer的話，如果你是linear model，你怎麼做都沒有辦法把藍色的點和紅色的點分來開，當你加上hidden layer會發生怎樣的事呢？當你加hidde layeer的時候，你就做了features transformation。你把原來的$x_1$,$x_2$轉換到另外一個平面$x_1$plane,$x_2$plane(藍色的兩個點是重合在一起的，如右圖所示)，當你從左下角的圖通過hidden layer變到右下角圖的時候，其實你就好像把原來這個平面對折了一樣，所以兩個藍色的點重合在了一起。這就好像是說剪窗花的時候對折一樣，如果你在圖上戳一個洞，那麼當你展開的時候，它在這些地方都會有一些洞(看你對折幾疊)。如果你把剪窗花的事情想成training。你把這件事想成是根據我們的training data，training data告訴我們說有畫斜線的部分是positive，沒畫斜線的部分是negative。假設我們已經把這個已經折起來的時候，這時候training data只要告訴我們說，在這個範圍之內(有斜線)是positive，在這個區間(無斜線)展開之後就是複雜的圖樣。 training data告訴我們比較簡單的東西，但是現在有因為對折的關係，展開以後你就可以有復雜的圖案(或者說你在這上面戳個洞，在就等同於在其他地方戳了個洞)。
 
-所以从这个例子来看，一笔data，就可以发挥五笔data效果。所以，你在做deep learning的时候，你其实是在用比较有效率的方式来使用你的data。你可能很想说真的是这样子吗？我在文件上没有太好的例子。所以我做了一个来展示这个例子。
+所以從這個例子來看，一筆data，就可以發揮五筆data效果。所以，你在做deep learning的時候，你其實是在用比較有效率的方式來使用你的data。你可能很想說真的是這樣子嗎？我在文件上沒有太好的例子。所以我做了一個來展示這個例子。
 
-### 使用二位坐标举例
+### 使用二位坐標舉例
 
 
 
 
 ![](res/chapter22-21.png)
 
-我们有一个function，它的input是二维$R^2$(坐标)，它的output是{0，1}，这个function是一个地毯形式的function(红色菱形的output就要是1，蓝色菱形output就要是0)。那现在我们要考虑如果我们用了不同量的training example在1个hidden layer跟3个hidden layer的时候。我们看到了什么的情形，这边要注意的是，我们要特别调整一个hidden layer和3个hidden layer的参数，所以并不是说当我是3个hidden layer的时候，是一个hidden layer的network。(这1个neural network是一个很胖的neural network，3个hidden layer是一个很瘦的neural network，他们的参数是要调整到接近的)
+我們有一個function，它的input是二維$R^2$(坐標)，它的output是{0，1}，這個function是一個地毯形式的function(紅色菱形的output就要是1，藍色菱形output就要是0)。那現在我們要考慮如果我們用了不同量的training example在1個hidden layer跟3個hidden layer的時候。我們看到了什麼的情形，這邊要注意的是，我們要特別調整一個hidden layer和3個hidden layer的參數，所以並不是說當我是3個hidden layer的時候，是一個hidden layer的network。 (這1個neural network是一個很胖的neural network，3個hidden layer是一個很瘦的neural network，他們的參數是要調整到接近的)
 
-那现在这边是要有10万笔data的时候，这两个neural都可以learn出这样的train data(从这个train data sample 10万笔data然后去给它学，它学出来就是右边这样的)
+那現在這邊是要有10萬筆data的時候，這兩個neural都可以learn出這樣的train data(從這個train data sample 10萬筆data然後去給它學，它學出來就是右邊這樣的)
 
-那现在我们减小参数的量，减少到只用2万笔来做train，这时候你会发现说，你用一个hidden lyaer的时候你的结果的就崩掉了，但如果是3个hidden layer的时候，你的结果变得只是比较差(比train data多的时候要差)，但是你会发现说你用3个hidden layer的时候是有次序的崩坏。这个结果(最右下角)就像是你今天要剪窗花的时候，折起来最后剪坏了，展开以后成这个样子。你会发现说在使用比较少的train data的时候，你有比较多的hidden layer最后得到的结果其实是比较好的。
+那現在我們減小參數的量，減少到只用2萬筆來做train，這時候你會發現說，你用一個hidden lyaer的時候你的結果的就崩掉了，但如果是3個hidden layer的時候，你的結果變得只是比較差(比train data多的時候要差)，但是你會發現說你用3個hidden layer的時候是有次序的崩壞。這個結果(最右下角)就像是你今天要剪窗花的時候，折起來最後剪壞了，展開以後成這個樣子。你會發現說在使用比較少的train data的時候，你有比較多的hidden layer最後得到的結果其實是比較好的。
 
 
 
-## 端到端的学习
+## 端到端的學習
 
 ![](res/chapter22-22.png)
 
-当我们用deep learning的时候，另外的一个好处是我们可以做End-to-end learning。
+當我們用deep learning的時候，另外的一個好處是我們可以做End-to-end learning。
 
-所谓的End-to-end learning的意思是这样，有时候我们要处理的问题是非常的复杂，比如说语音辨识就是一个非常复杂的问题。那么说我们要解一个machine problem我们要做的事情就是，先把一个Hypothesis funuctions(也就是找一个model)，当你要处理1的问题是很复杂的时候，你这个model里面它会是需要是一个生产线(由许多简单的function串接在一起)。比如说，你要做语音辨识，你要把语音送进来再到通过一层一层的转化，最后变成文字。当你多End-to-end learning的时候，意思就是说你只给你的model input跟output，你不告诉它说中间每一个function要咋样分工(只给input跟output，让它自己去学)，让它自己去学中间每一个function(生产线的每一个点)应该要做什么事情。
+所謂的End-to-end learning的意思是這樣，有時候我們要處理的問題是非常的複雜，比如說語音辨識就是一個非常複雜的問題。那麼說我們要解一個machine problem我們要做的事情就是，先把一個Hypothesis funuctions(也就是找一個model)，當你要處理1的問題是很複雜的時候，你這個model裡面它會是需要是一個生產線(由許多簡單的function串接在一起)。比如說，你要做語音辨識，你要把語音送進來再到通過一層一層的轉化，最後變成文字。當你多End-to-end learning的時候，意思就是說你只給你的model input跟output，你不告訴它說中間每一個function要咋樣分工(只給input跟output，讓它自己去學)，讓它自己去學中間每一個function(生產線的每一個點)應該要做什麼事情。
 
-那在deep learning里面要做这件事的时候，你就是叠一个很深的neural network，每一层就是生产线的每一个点(每一层就会学到说自己要做什么样的事情)
+那在deep learning裡面要做這件事的時候，你就是疊一個很深的neural network，每一層就是生產線的每一個點(每一層就會學到說自己要做什麼樣的事情)
 
 
 
-### 语音识别
+### 語音識別
 
 ![](res/chapter22-23.png)
-比如说，在语音辨识里面。还没有用deep learning的时候，我们怎么来做语音辨识呢，我们可能是这样做的。
+比如說，在語音辨識裡面。還沒有用deep learning的時候，我們怎麼來做語音辨識呢，我們可能是這樣做的。
 
-先有一段声音讯号(要把声音对应成文字),你要先做DF，你不知道这是什么也没有关系，反正就是一个function，变成spectogram，这个spectogram通过filter bank(不知道filter bank是什么，没有关系，就是生产线的另外一个点)，最后得到output，然后再去log(取log是非常有道理的)，然后做DCT得到MFCC,把MFCC丢到GMM里面，最后你得到语音辨识的结果。
+先有一段聲音訊號(要把聲音對應成文字),你要先做DF，你不知道這是什麼也沒有關係，反正就是一個function，變成spectogram，這個spectogram通過filter bank(不知道filter bank是什麼，沒有關係，就是生產線的另外一個點)，最後得到output，然後再去log(取log是非常有道理的)，然後做DCT得到MFCC,把MFCC丟到GMM裡面，最後你得到語音辨識的結果。
 
-只有最后蓝色的这个bank是用训练数据学出来的，前面这些绿色的这些都是人手定(研究人的生理定出了这些function)。但是后来有了deep learning以后，这些东西可以用neural network把它取代掉。你就把你的deep network多加几层就可以把DCT拿掉。现在你可以从spectogram开始做，你这这些都拿掉，通通都拿deep neural network取代掉，也可以得到更好的结果。deep learning它要做的事情，你会发现他会自动学到要做filter bank(模拟人类听觉器官所制定的filter)这件事情
+只有最後藍色的這個bank是用訓練數據學出來的，前面這些綠色的這些都是人手定(研究人的生理定出了這些function)。但是後來有了deep learning以後，這些東西可以用neural network把它取代掉。你就把你的deep network多加幾層就可以把DCT拿掉。現在你可以從spectogram開始做，你這這些都拿掉，通通都拿deep neural network取代掉，也可以得到更好的結果。 deep learning它要做的事情，你會發現他會自動學到要做filter bank(模擬人類聽覺器官所製定的filter)這件事情
 
 ![](res/chapter22-24.png)
-接下来就有人挑战说我们可不可以叠一个很深很深的neural network，直接input就是target main声音讯号，output直接就是文字，中间完全就不用做，那就不需要学信号与系统
+接下來就有人挑戰說我們可不可以疊一個很深很深的neural network，直接input就是target main聲音訊號，output直接就是文字，中間完全就不用做，那就不需要學信號與系統
 
-Google 有一篇paper是这样子，它最后的结果是这样子的，它拼死去learn了一个很大neural network，input就是声音讯号，完全不做其它的任何事情，它最后可以做到跟有Fourier transform的事情打平，也仅次于打平而已。我目前还没看到input一个声音讯号，比Fourier transform结果比这要好的。
+Google 有一篇paper是這樣子，它最後的結果是這樣子的，它拼死去learn了一個很大neural network，input就是聲音訊號，完全不做其它的任何事情，它最後可以做到跟有Fourier transform的事情打平，也僅次於打平而已。我目前還沒看到input一個聲音訊號，比Fourier transform結果比這要好的。
 
-### 图像识别
+### 圖像識別
 
 ![](res/chapter22-25.png)
-刚刚都是讲语音的例子，影像也是差不多的。大家也都知道，我们就跳过去(过去影像也是叠很多很多的graph在最后一层用比较简单的classifier)
+剛剛都是講語音的例子，影像也是差不多的。大家也都知道，我們就跳過去(過去影像也是疊很多很多的graph在最後一層用比較簡單的classifier)
 
 ![](res/chapter22-26.png)
-那现在用一个很深的neural，input直接是piexel，output里面是影像是什么
-
-
-
-### 更复杂的任务
+那現在用一個很深的neural，input直接是piexel，output裡面是影像是什麼
+### 更複雜的任務
 
 ![](res/chapter22-27.png)
-那deep learning还有什么好处呢。通常我们在意的task是非常复杂的，在这非常复杂的task里面，有非常像的input，会有很不同的output。举例来说，在做影视辨识的时候，白色的狗跟北极熊看起来很像，但是你的machine左边要outp dog，右边要output bear。有时候很不一样的东西，其实是一样的，横着看火车和侧面看火车，他们其实是不一样，但是output告诉我说一样的。
+那deep learning還有什麼好處呢。通常我們在意的task是非常複雜的，在這非常複雜的task裡面，有非常像的input，會有很不同的output。舉例來說，在做影視辨識的時候，白色的狗跟北極熊看起來很像，但是你的machine左邊要outp dog，右邊要output bear。有時候很不一樣的東西，其實是一樣的，橫著看火車和側面看火車，他們其實是不一樣，但是output告訴我說一樣的。
 
-今天的neural只有一层的话(简单的transform)，你没有办法把一样的东西变成很不一样，把不一样的东西变的很像，原来input很像的东西结果看起来很不像，你要做很多层次的转换。
+今天的neural只有一層的話(簡單的transform)，你沒有辦法把一樣的東西變成很不一樣，把不一樣的東西變的很像，原來input很像的東西結果看起來很不像，你要做很多層次的轉換。
 
 
 
 ![](res/chapter22-28.png)
-举例来说，看这个例子(这个是语言的例子)。在这个图上，把MFCC投影到二维上，不同颜色代表的是不同的人说的话。在语音上你会发现说，同样的句子，不同人的说，它的声音讯号，看起来是不一样的(这个红色看起来跟蓝色看起来没关系，蓝色跟绿色没有关系)。有人看这个图，语音辨识不能做呀。不同的人说话太不一样了。
+舉例來說，看這個例子(這個是語言的例子)。在這個圖上，把MFCC投影到二維上，不同顏色代表的是不同的人說的話。在語音上你會發現說，同樣的句子，不同人的說，它的聲音訊號，看起來是不一樣的(這個紅色看起來跟藍色看起來沒關係，藍色跟綠色沒有關係)。有人看這個圖，語音辨識不能做呀。不同的人說話太不一樣了。
 
-如果你今天learn 一个neural network，如果你只要第一层的hidden layer的output，你会发现说，不同的人讲的同样的句子还是很不一样的。
+如果你今天learn 一個neural network，如果你只要第一層的hidden layer的output，你會發現說，不同的人講的同樣的句子還是很不一樣的。
 
-但是你看第8个hidden layer output的时候， 你会发现说，不同的人说着同样的句子，它自动的被line在一起了，也就是说这个DNN在经过很多hidden layer转换的时候，它把本来看起来很不像的东西，它知道应该是一样的(map在一起了)。在右边的这个图上，你会看到一条一条的线，在这些线中你会看到不同颜色的声音讯号。也就是说不同的人说着同样的话经过8个hidden layer的转换以后，对neural network来说，它就变得很像。
+但是你看第8個hidden layer output的時候， 你會發現說，不同的人說著同樣的句子，它自動的被line在一起了，也就是說這個DNN在經過很多hidden layer轉換的時候，它把本來看起來很不像的東西，它知道應該是一樣的(map在一起了)。在右邊的這個圖上，你會看到一條一條的線，在這些線中你會看到不同顏色的聲音訊號。也就是說不同的人說著同樣的話經過8個hidden layer的轉換以後，對neural network來說，它就變得很像。
 
 ![](res/chapter22-29.png)
-手写数字辨识的例子，input feature是左上角这张图(28*28 pixel，把28 *28pixel project到二维平面的话就是左上角的图)，在这张图上，4跟9几乎是叠在一起的(4跟9很像，几乎没有办法把它分开)。但是我们看hidden layer的output，这时候4跟9还是很像(离的很近)，我们看第2个hidden layer的output(4,7,9)逐渐被分开了，到第三个hidden layer，他们会被分的更开。所以你今天要原来很像的input 最后要分的很开，那你就需要好多hidden layer才能办到这件事情
-
+手寫數字辨識的例子，input feature是左上角這張圖(28*28 pixel，把28 *28pixel project到二維平面的話就是左上角的圖)，在這張圖上，4跟9幾乎是疊在一起的(4跟9很像，幾乎沒有辦法把它分開)。但是我們看hidden layer的output，這時候4跟9還是很像(離的很近)，我們看第2個hidden layer的output(4,7,9)逐漸被分開了，到第三個hidden layer ，他們會被分的更開。所以你今天要原來很像的input 最後要分的很開，那你就需要好多hidden layer才能辦到這件事情
 
 
 
