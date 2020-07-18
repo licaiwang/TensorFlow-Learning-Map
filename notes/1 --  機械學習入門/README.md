@@ -1,6 +1,6 @@
 機器學習速成課程
 
-官網：https://developers.google.com/machine-learning/crash-course/
+[官網]：(https://developers.google.com/machine-learning/crash-course/)
 
 - [線上課程](https://developers.google.com/machine-learning/crash-course/)
 - [練習](https://developers.google.com/machine-learning/crash-course/exercises)
