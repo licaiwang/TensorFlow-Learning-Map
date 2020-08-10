@@ -2,44 +2,45 @@
 
 ## 監督學習和半監督學習
 ![](res/chapter23-1.png)
-在supervised裡面，你就是有一大推的training data，這些training data的組成是一個function的input跟output，假設你有R筆train data，每一筆train data有$x^r$,$\hat{ y}^r $。假設$x^r$是一張image，$\hat{y}$是class label。 semi-supervised learning是在label上面，是有另外一組unlabel的data，這組data記做$x^u$,這組data只有input，沒有output(U筆data)。在做semi-superised learning時，U遠遠大於R(unlabel的數量遠遠大於label data的數量)。 semi-surprised learning可以分成兩種，一種是transductive learning，一種是inductive learning。這兩種最簡單的分法是：在做transductive的時候，你的unlabel data就是你的testing data，inductive learning 就是說：不把unlabel data考慮進來。
+在 supervised 裡面，你就是有一大推的 training data，這些 training data 的組成是一個 function 的 input 跟 output，假設你有 R 筆 train data，每一筆 train data 有 x^r, \hat{y}^r 。假設 x^r 是一張 image，\hat{y} 是class label。 semi-supervised learning 是在 label 上面，是有另外一組unlabel 的data，這組 data 記做 x^u ,這組 data 只有 input，沒有 output( U 筆data)。在做semi-superised learning 時，U 遠遠大於R(unlabel的數量遠遠大於label data的數量)。 semi-surprised learning 可以分成兩種，一種是 transductive learning，一種是 inductive learning。這兩種最簡單的分法是：在做 transductive 的時候，你的 unlabel data 就是你的 testing data，inductive learning 就是說：不把 unlabel data 考慮進來。
 
-為什麼做semi-supervised learning，因為有人常會說，我們缺data，其實我們不是缺data，其實我們缺的是與label的data。比如說，你收集image很容易(在街上一直照就行了)，但是這些image是沒有的label。 label data 是很少的，unlabel是非常多的。所以semi-surprvised learning如果可以利用這些unlabel data來做某些事是會很有價值的。
+為什麼做 semi-supervised learning，因為有人常會說，我們缺 data，**其實我們不是缺 data，其實我們缺的是與 label 的 data。** 比如說，你收集 image 很容易(在街上一直照就行了)，但是這些 image是沒有的 label。 label data 是很少的，unlabel 是非常多的。**所以semi-surprvised learning 如果可以利用這些u nlabel data來做某些事是會很有價值的。**
 
-我們人類可能一直是在semi-supervised learning，比如說，小孩子會從父母那邊得到一點點的supervised(小孩子在街上，問爸爸媽媽這是什麼，爸爸媽媽說：這是狗。在以後的日子裡，小孩子會看到很多奇奇怪怪的東西，也沒有人在告訴這是什麼動物，但小孩子依然還是會判別出狗)
+我們人類可能一直是在 semi-supervised learning，比如說，小孩子會從父母那邊得到一點點的 supervised(小孩子在街上，問爸爸媽媽這是什麼，爸爸媽媽說：這是狗。在以後的日子裡，小孩子會看到很多奇奇怪怪的東西，也沒有人在告訴這是什麼動物，但小孩子依然還是會判別出狗)
 
 ### 半監督學習的好處
 ![](res/chapter23-2.png)
-為什麼semi-supervised learning有可能會帶來幫助呢？假設我們現在要做分類的task，建一個貓跟狗的classifier，我們同時有一大堆貓跟狗的圖片。這些圖片是沒有label的，並不知道哪些是貓哪些是狗。
+為什麼 semi-supervised learning 有可能會帶來幫助呢？假設我們現在要做分類的 task，建一個貓跟狗的 classifier，我們同時有一大堆貓跟狗的圖片。這些圖片是沒有 label 的，並不知道哪些是貓哪些是狗。
 
 ![](res/chapter23-3.png)
-那今天我們只考慮有label的貓跟狗的data，畫一個boundary，將貓跟狗的train data分開的話，你可能就會畫在中間(垂直)。那如果unlabel的分佈長的像灰色的點這個樣子的話，這可能會影響你的決定。雖然unlabel data只告訴我們了input，但**unlabeled data的分佈**可以告訴我們一些事。那你可能會把boundary變為這樣(斜線)。但是semi-supervised learning使用unlabel的方式往往伴隨著一些假設，其實semi-supervised learning有沒有用，是取決於你這個假設符不符合實際/精不精確。
+那今天我們只考慮有label 的貓跟狗的 data，畫一個 boundary，將貓跟狗的 train data 分開的話，你可能就會畫在中間(垂直)。那如果 unlabel 的分佈長的像灰色的點這個樣子的話，這可能會影響你的決定。雖然 unlabel data 只告訴我們了 input，但**unlabeled data的分佈**可以告訴我們一些事。那你可能會把 boundary 變為這樣(斜線)。但是 semi-supervised learning 使用 unlabel 的方式往往伴隨著一些假設，其實 semi-supervised learning 有沒有用，是取決於你這個假設符不符合實際/精不精確。
 
 ![](res/chapter23-4.png)
-這邊要講四件事，第一個是在generative model的時候，怎麼用semi-supervised learning。還要講兩個還蠻通用的假設，一個是Low-density Separation Assumption,另一個是Smoothness Assumption，最後還有Better Representation
+這邊要講四件事，第一個是在 generative model 的時候，怎麼用 semi-supervised learning。還要講兩個還蠻通用的假設，一個是 Low-density Separation Assumption,另一個是 Smoothness Assumption，最後還有 Better Representation
 
 ## 監督生成模型和半監督生成模型
 ### 監督生成模型
 ![](res/chapter23-5.png)
 
-我們都已經看過，supervised generative model，在supervised learning裡面有一堆train example，你知道分別是屬於class1，class2。你會去估測class1，class2的probability($P(X|C_i)$)
+我們都已經看過，supervised generative model，在supervised learning裡面有一堆 train example，你知道分別是屬於 class1，class2。你會去估測class1，class2的 probability
 
-假設每一個class它的分佈都是一個Gaussion distribution，那你會估測說class1是從μ是$μ^1$，covariance是$\Sigma$的Gaussion估測出來的，class2是從μ是$μ ^2$，covariance是$\Sigma$的Gaussion估測出來的。
+假設每一個 class 它的分佈都是一個 Gaussion distribution，那你會估測說 class1 是從 μ 是 μ^1，covariance是 \Sigma 的 Gaussion 估測出來的，class2 是從 μ 是 μ ^2，covariance是 \Sigma 的Gaussion 估測出來的。
 
-那現在有了這些probability，有了這些$μ$、covariance，你就可以估測given一個新的data做classification，然後你就會決定boundary的位置在哪裡。
+那現在有了這些 probability，有了這些 μ、covariance，你就可以估測 given 一個新的 data 做 classification，然後你就會決定 boundary 的位置在哪裡。
+
 ### 半監督生成模型
 ![](res/chapter23-6.png)
 
-但是今天給了我們一些unlabel data，它就會影響你的決定。舉例來說，我們看左邊這筆data，我們假設綠色這些使unlabel data，那如果你的$\mu $跟variance是$\mu ^1$,$\mu ^2,\Sigma$顯然是不合理的。今天這個$\Sigma$應該比較接近圓圈，或者說你在sample的時候有點問題，所以你sample出比較奇怪的distribution。比如說，這兩個class label data是比較多的(可能class2是比較多的，所以這邊probability是比較大的)，總之看這些unlabel data以後，會影響你對probability，$\mu$,$ \Sigma$的估測，就影響你的probability的式子，就影響了你的decision boundary。
+但是今天給了我們一些 unlabel data，它就會影響你的決定。舉例來說，我們看左邊這筆data，我們假設綠色這些使unlabel data，那如果你的 \mu 跟 variance 是 \mu ^1,\mu ^2,\Sigma 顯然是不合理的。今天這個 \Sigma 應該比較接近圓圈，或者說你在 sample 的時候有點問題，所以你 sample 出比較奇怪的 distribution。比如說，這兩個class label data是比較多的(可能class2是比較多的，所以這邊 probability是比較大的)，總之看這些unlabel data以後，會影響你對probability，\mu, \Sigma$的估測，就影響你的 probability 的式子，就影響了你的decision boundary。
 
 ![](res/chapter23-7.png)
-對於實際過程中的做法，我們先講操作方式，再講原理。先初始化參數(class1,class2的機率，$\mu ^1$,$\mu ^2,\Sigma$，這些值，你可以用已經有label data先估測一個值，得到一組初始化的參數，這些參數統稱$\theta$
+對於實際過程中的做法，我們先講操作方式，再講原理。先初始化參數(class1,class2的機率，\mu ^1,\mu ^2,\Sigma，這些值，你可以用已經有 label data先估測一個值，得到一組初始化的參數，這些參數統稱\theta
 
-- Step1 先計算每一筆unlabel data的posterior probability，根據現有的$\theta$計算每一筆unlabel data屬於class1的機率，那這個機率算出來是怎麼樣的是和你的model的值有關的。
+- Step1 先計算每一筆 unlabel data 的 posterior probability，根據現有的 \theta 計算每一筆 unlabel data屬於class1的機率，那這個機率算出來是怎麼樣的是和你的 model 的值有關的。
 
-- Step2 算出這個機率以後呢，你就可以update你的model，這個update的式子是非常的直覺，這個$C_1$的probability是怎麼算呢，原來的沒有unlabel data的時候，你的計算方法可能是：這個N是所有的example,$N_1$是被標註的$C_1$example，如果你要算$C_1$的probability，這件事情太直覺了，如果不考慮unlabel data的話(感覺就是$N_1$除以N)。但是現在我們要考慮unlabel data，那根據unlabel告訴我們的諮詢，$C_1$是出現次數就是所有unlabel data它是$C_1$posterior probability的和。所有unlabel data而是根據它的posterior probability決定它有百分之多少是屬於$C_1$,有多少是屬於$C_2$，$\mu^1$怎麼算呢，原來不考慮unlabel data時，$\ mu^1$就是把所有$C_1$的label data都平均起來就結束了。如果今天加上unlabel data的話，其實就是把unlabel data的每一筆data$x^u$根據它的posterior probability做相乘。如果這個$x^u$比較偏向class1$C^1$的話，它對class1的影響就大一點，反之就小一點。 (不用解釋這是為什麼這樣，因為這太直覺了)$C_2$的probability就是這樣的做的$\mu^1,\mu^2,\sum$也都是這樣做的，有了新的model ，你就會做step1，有了新的model以後，這個機率就不一樣了，這個機率不一樣了，在做step2，你的model就不一樣了。這樣update你的機率，然後就反復反复的下去。理論上這個方法會保證收斂，但是它的初始值跟GD會影響你收斂的結果。
+- Step2 算出這個機率以後呢，你就可以 update 你的 model，這個 update 的式子是非常的直覺，這個 C_1 的probability 是怎麼算呢，原來的沒有 unlabel data 的時候，你的計算方法可能是：這個 N 是所有的 example,N_1 是被標註的 C_1example，如果你要算 C_1 的probability，這件事情太直覺了，如果不考慮 unlabel data 的話(感覺就是 N_1 除以 N)。但是現在我們要考慮 unlabel data，那根據 unlabel 告訴我們的諮詢，C_1 是出現次數就是所有 unlabel data 它是 C_1 posterior probability 的和。所有 unlabel data 而是根據它的 posterior probability 決定它有百分之多少是屬於 C_1 ,有多少是屬於$C_2$，$\mu^1$怎麼算呢，原來不考慮unlabel data時，$\ mu^1$就是把所有$C_1$的label data都平均起來就結束了。如果今天加上unlabel data的話，其實就是把unlabel data的每一筆data$x^u$根據它的posterior probability做相乘。如果這個$x^u$比較偏向class1$C^1$的話，它對class1的影響就大一點，反之就小一點。 (不用解釋這是為什麼這樣，因為這太直覺了)$C_2$的probability就是這樣的做的$\mu^1,\mu^2,\sum$也都是這樣做的，有了新的model ，你就會做step1，有了新的model以後，這個機率就不一樣了，這個機率不一樣了，在做step2，你的model就不一樣了。這樣update你的機率，然後就反復反复的下去。理論上這個方法會保證收斂，但是它的初始值跟GD會影響你收斂的結果。
 
-這裡的Step1就是Estep，而Step2就是Mstep（也就是熟悉的EM算法）
+這裡的 Step1 就是 Estep，而 Step2 就是 Mstep（也就是熟悉的EM算法）
 
 ![](res/chapter23-8.png)
 
